@@ -11,6 +11,35 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <%= link_to 'Pousadas', root_path %> |
+        <% if user_signed_in? %>
+          <%= current_user.email %> |
+          <%= current_user.name %> |
+          <%= current_user.role %> |
+          <% if current_user.Anfitrião? %>
+            <% if current_user.lodge_house %>
+              <%= link_to 'Minha pousada', current_user.lodge_house %>
+              <%= link_to 'Cadastrar quarto', new_lodge_room_path %>
+            <% else %>
+              <%= link_to 'Criar pousada', new_lodge_house_path %> 
+            <% end %>
+          <% end %>
+          <p></p>
+          <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <p></p>
+          <%= button_to 'Entrar', new_user_session_path %>
+        <% end %>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <%= yield %>
+    </main>
   </body>
 </html>

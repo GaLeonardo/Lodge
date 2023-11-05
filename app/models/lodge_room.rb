@@ -1,0 +1,2 @@
+class LodgeRoom < ApplicationRecord
+end
