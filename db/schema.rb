@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_05_023838) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_05_204251) do
   create_table "lodge_houses", force: :cascade do |t|
     t.string "corporate_name"
     t.string "brand_name"
@@ -41,14 +41,30 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_023838) do
     t.integer "area"
     t.integer "number_people"
     t.integer "standard_price"
+    t.integer "lodge_house_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lodge_house_id"], name: "index_lodge_rooms_on_lodge_house_id"
   end
 
   create_table "payment_methods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.boolean "bathroom"
+    t.boolean "balcony"
+    t.boolean "air_conditioner"
+    t.boolean "tv"
+    t.boolean "closet"
+    t.boolean "vault"
+    t.boolean "accessibility"
+    t.integer "lodge_room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lodge_room_id"], name: "index_services_on_lodge_room_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,4 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_023838) do
 
   add_foreign_key "lodge_houses", "payment_methods", column: "payment_methods_id"
   add_foreign_key "lodge_houses", "users"
+  add_foreign_key "lodge_rooms", "lodge_houses"
+  add_foreign_key "services", "lodge_rooms"
 end

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bathroom: false
+  balcony: false
+  air_conditioner: false
+  tv: false
+  closet: false
+  vault: false
+  accessibility: false
+  lodge_room: one
+
+two:
+  bathroom: false
+  balcony: false
+  air_conditioner: false
+  tv: false
+  closet: false
+  vault: false
+  accessibility: false
+  lodge_room: two

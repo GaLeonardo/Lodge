@@ -1,6 +1,6 @@
 <h2><%= @lodge_house.brand_name %></h2>
 
-<% if current_user.lodge_house == @lodge_house %>
+<% if current_user && current_user.lodge_house == @lodge_house %>
   <%= link_to 'Editar', edit_lodge_house_path %>
 <% end %>
 

@@ -20,7 +20,7 @@
           <%= current_user.role %> |
           <% if current_user.Anfitrião? %>
             <% if current_user.lodge_house %>
-              <%= link_to 'Minha pousada', current_user.lodge_house %>
+              <%= link_to 'Minha pousada', current_user.lodge_house %> |
               <%= link_to 'Cadastrar quarto', new_lodge_room_path %>
             <% else %>
               <%= link_to 'Criar pousada', new_lodge_house_path %> 

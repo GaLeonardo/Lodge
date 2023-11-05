@@ -1,0 +1,42 @@
+<h2>Quarto</h2>
+
+<div>
+  <h3><%= @lodge_room.name %></h3>
+</div>
+
+<div>
+  <%= @lodge_room.description %>
+</div>
+
+<dl>
+  <div>
+      <dt>Preço:</dt>
+      <dd>R$ <%= @lodge_room.standard_price %></dd>
+  </div>
+
+  <div>
+      <dt>Área:</dt>
+      <dd><%= @lodge_room.area %> m²</dd>
+  </div>
+
+  <div>
+      <dt>Quantidade de pessoas permitida:</dt>
+      <dd><%= @lodge_room.number_people %></dd>
+  </div>
+
+  <div>
+      <dt>Valor Diária:</dt>
+      <dd>R$ <%= @lodge_room.standard_price %></dd>
+  </div>
+
+  <div>
+      <dt>Serviços:</dt>
+      <dd><%= 'Banheiro' if @lodge_room.service.bathroom %></dd>
+      <dd><%= 'Varanda' if @lodge_room.service.bathroom %></dd>
+      <dd><%= 'Ar-condicionado' if @lodge_room.service.bathroom %></dd>
+      <dd><%= 'TV' if @lodge_room.service.bathroom %></dd>
+      <dd><%= 'Guarda-roupas' if @lodge_room.service.bathroom %></dd>
+      <dd><%= 'Cofre' if @lodge_room.service.bathroom %></dd>
+      <dd><%= 'Acessível para pessoas com deficiência' if @lodge_room.service.bathroom %></dd>
+  </div>
+</dl>

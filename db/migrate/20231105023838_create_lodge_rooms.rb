@@ -6,6 +6,7 @@ class CreateLodgeRooms < ActiveRecord::Migration[7.1]
       t.integer :area
       t.integer :number_people
       t.integer :standard_price
+      t.references :lodge_house, null: false, foreign_key: true
 
       t.timestamps
     end
