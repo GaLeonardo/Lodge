@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      lodge_house: 'Pousada'
+    attributes:
+      lodge_house:
+        corporate_name: 'Razão social'
+        brand_name: 'Nome da pousada'
+        registration_number: 'CNPJ'
+        full_address: 'Endereço'
+        city: 'Cidade'
+        state: 'Estado'
+        email: 'E-mail'
+        zip_code: 'CEP'
+        contact_number: 'Telefone'
+        description: 'Descrição'
+        payment_methods_id: 'Método de pagamento'
+        pets: 'Pets'
+        terms_of_service: 'Politica de uso da pousada'
+        check_in: 'Check-in'
+        check_out: 'Check-out'

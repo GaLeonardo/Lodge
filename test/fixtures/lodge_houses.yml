@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  corporate_name: MyString
+  brand_name: MyString
+  registration_number: MyString
+  full_address: MyString
+  city: MyString
+  state: MyString
+  email: MyString
+  zip_code: MyString
+  contact_number: MyString
+  description: MyString
+  paying_methods: 1
+  pets: 1
+  terms_of_service: MyString
+  check_in: MyString
+  check_out: MyString
+  user: one
+
+two:
+  corporate_name: MyString
+  brand_name: MyString
+  registration_number: MyString
+  full_address: MyString
+  city: MyString
+  state: MyString
+  email: MyString
+  zip_code: MyString
+  contact_number: MyString
+  description: MyString
+  paying_methods: 1
+  pets: 1
+  terms_of_service: MyString
+  check_in: MyString
+  check_out: MyString
+  user: two

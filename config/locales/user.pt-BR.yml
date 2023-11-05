@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      user: 'Usuário'
+    attributes:
+      user:
+        name: 'Nome'
+        role: 'Tipo de Usuário'
+        roles:
+          host: 'Anfitrião'
+          user: 'Visitante'
+        
