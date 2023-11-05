@@ -26,7 +26,6 @@ describe 'Host create loadge' do
     fill_in 'Politica de uso da pousada', with: 'Proibido fumar e som alto após as 22:00h'
     fill_in 'Check-in', with: '11:00'
     fill_in 'Check-out', with: '12:00'
-    select 'José', from: 'User'
     click_on 'Cadastrar pousada'
     
     expect(page).to have_content 'Pousada cadastrada com sucesso!'

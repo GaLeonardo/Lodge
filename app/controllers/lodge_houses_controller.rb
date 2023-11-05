@@ -13,6 +13,7 @@ class LodgeHousesController < ApplicationController
 
   def create
     @lodge_house = LodgeHouse.new(lodgehouse_params)
+    @lodge_house.user_id = current_user.id
     
     if @lodge_house.save
       current_user.lodge_house = @lodge_house
@@ -37,6 +38,7 @@ class LodgeHousesController < ApplicationController
 
   def update
     @lodge_house = LodgeHouse.find(params[:id])
+
     if @lodge_house.update(lodgehouse_params)
       return redirect_to @lodge_house, notice: 'Pousada editada com sucesso!'
     end

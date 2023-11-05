@@ -99,11 +99,6 @@
     <%= lh.label :check_out %>
     <%= lh.time_field :check_out %>
   </div>
-  
-  <div>
-    <%= lh.label :user_id %>
-    <%= lh.collection_select :user_id, @users, :id, :name %>
-  </div>
 
   <div>
     <%= lh.submit 'Cadastrar pousada' %>

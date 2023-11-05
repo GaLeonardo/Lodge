@@ -5,8 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   enum role: {Visitante: 0, Anfitrião: 1} 
-  
-          
 
   has_one :lodge_house
 
