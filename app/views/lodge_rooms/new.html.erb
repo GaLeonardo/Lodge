@@ -1,0 +1,41 @@
+<h2>Criar quarto</h2>
+
+<% if @lodge_room.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @lodge_room.errors.full_messages.each do |msg| %>
+      <li> <%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @lodge_room do |lr| %>
+  <div>
+    <%= lr.label :name %>
+    <%= lr.text_field :name %>
+  </div>
+
+  <div>
+    <%= lr.label :description %>
+    <%= lr.text_field :description %>
+  </div>
+
+  <div>
+    <%= lr.label :area, 'Dimensão (m²)' %>
+    <%= lr.text_field :area %>
+  </div>
+
+  <div>
+    <%= lr.label :number_people %>
+    <%= lr.text_field :number_people %>
+  </div>
+
+  <div>
+    <%= lr.label :standard_price %>
+    <%= lr.text_field :standard_price %>
+  </div>
+
+  <div>
+    <%= lr.submit 'Salvar' %>
+  </div>
+<% end %>

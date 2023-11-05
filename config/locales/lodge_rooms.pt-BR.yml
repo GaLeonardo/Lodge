@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      lodge_room: 'Quarto'
+    attributes:
+      lodge_room:
+        name: 'Nome'
+        description: 'Descrição'
+        area: 'Área'
+        number_people: 'Quantidade máxima de pessoas por quarto'
+        standard_price: 'Valor diário padrão'
