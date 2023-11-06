@@ -1,2 +1,15 @@
 <h1>Pousadas</h1>
 
+<% @lodge_houses.each do |lh| %>
+  -------------------------------------------------
+  <div>
+    <h3><%= link_to lh.brand_name, lh %></h3>
+    <p><%= lh.description %></p>
+  </div>
+
+  <div>
+    <%= lh.full_address %><br/>
+    <%= lh.city %>, <%= lh.state %> <br/>
+    <%= lh.zip_code %>
+  </div>
+<% end %>

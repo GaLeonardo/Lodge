@@ -37,4 +37,29 @@ describe 'Host create lodge room' do
     expect(page).to have_content 'Cofre'
     expect(page).to have_content 'Acessível para pessoas com deficiência'
   end
+
+  it 'and see from lodge house' do
+    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'Anfitrião')
+    PaymentMethod.create!(name: 'Pix')
+    lodge_house = LodgeHouse.create!(corporate_name: 'Pousada Sol Nascente LTDA', brand_name: 'Pousada Sol Nascente', registration_number: '01514184897000136', full_address: 'Rua das Águas, 10', city: 'São Paulo', state: 'SP', email: 'pousadasolnascente@contato.com', zip_code: '01100036', contact_number: '14998548758', description: 'Uma pousada com maravilhas do campo e vistas inimagináveis', pets: 1, terms_of_service: 'Proíbido som alto', check_in: '11:30', check_out: '12:00', status: 1, user_id: 1, payment_methods_id: 1)
+    lodge_room = LodgeRoom.create!(name: 'Quarto Duplo de Luxo', description: 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.', area: '18', number_people: '2', standard_price: '150', lodge_house: lodge_house)
+    Service.create!(bathroom: true, balcony: true, air_conditioner: true, tv: true, closet: true, vault: true, accessibility: true, lodge_room: lodge_room)
+
+    login_as(user)
+    visit root_path
+    click_on 'Minha pousada'
+
+    expect(page).to have_content 'Quarto Duplo de Luxo'
+    expect(page).to have_content 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.'
+    expect(page).to have_content 'Área: 18 m²'
+    expect(page).to have_content 'Quantidade de pessoas permitida: 2'
+    expect(page).to have_content 'Valor Diária: R$ 150'
+    expect(page).to have_content 'Banheiro'
+    expect(page).to have_content 'Varanda'
+    expect(page).to have_content 'Ar-condicionado'
+    expect(page).to have_content 'TV'
+    expect(page).to have_content 'Guarda-roupas'
+    expect(page).to have_content 'Cofre'
+    expect(page).to have_content 'Acessível para pessoas com deficiência'
+  end
 end

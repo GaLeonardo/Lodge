@@ -28,6 +28,7 @@ class LodgeHousesController < ApplicationController
 
   def show
     @lodge_house = LodgeHouse.find(params[:id])
+    @lodge_rooms = @lodge_house.lodge_rooms
   end
 
   def edit

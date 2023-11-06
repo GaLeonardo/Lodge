@@ -34,3 +34,55 @@
     <dd><%= @lodge_house.email %></dd>
   </div>
 </dl>
+
+<h2>Quartos</h2>
+
+<% if @lodge_rooms.any? %>
+  <% @lodge_rooms.each do |lr| %>
+    -----------------------------------------------------
+    <div>
+      <h3><%= lr.name %></h3>
+    </div>
+
+    <div>
+      <%= lr.description %>
+    </div>
+
+    <dl>
+      <div>
+          <dt>Preço:</dt>
+          <dd>R$ <%= lr.standard_price %></dd>
+      </div>
+
+      <div>
+          <dt>Área:</dt>
+          <dd><%= lr.area %> m²</dd>
+      </div>
+
+      <div>
+          <dt>Quantidade de pessoas permitida:</dt>
+          <dd><%= lr.number_people %></dd>
+      </div>
+
+      <div>
+          <dt>Valor Diária:</dt>
+          <dd>R$ <%= lr.standard_price %></dd>
+      </div>
+
+      <div>
+          <dt>Serviços:</dt>
+          <dd><%= 'Banheiro' if lr.service.bathroom %></dd>
+          <dd><%= 'Varanda' if lr.service.bathroom %></dd>
+          <dd><%= 'Ar-condicionado' if lr.service.bathroom %></dd>
+          <dd><%= 'TV' if lr.service.bathroom %></dd>
+          <dd><%= 'Guarda-roupas' if lr.service.bathroom %></dd>
+          <dd><%= 'Cofre' if lr.service.bathroom %></dd>
+          <dd><%= 'Acessível para pessoas com deficiência' if lr.service.bathroom %></dd>
+      </div>
+    </dl>
+  <% end %>
+<% else %>
+  <div>
+    Não existem quartos cadastrados nessa pousada.
+  </div>
+<% end %>
