@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User autenticates' do
   it 'successfully as host' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'Anfitrião')
+    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
 
     visit root_path
     click_on 'Entrar'

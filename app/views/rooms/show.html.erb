@@ -1,0 +1,75 @@
+<h2>Quarto</h2>
+
+<div>
+  <h3><%= @room.name %></h3>
+</div>
+
+<div>
+  <%= @room.description %>
+</div>
+
+<dl>
+  <div>
+      <dt>Preço:</dt>
+      <dd>R$ <%= @room.standard_price %></dd>
+  </div>
+
+  <div>
+      <dt>Área:</dt>
+      <dd><%= @room.area %> m²</dd>
+  </div>
+
+  <div>
+      <dt>Quantidade de pessoas permitida:</dt>
+      <dd><%= @room.number_people %></dd>
+  </div>
+
+  <div>
+      <dt>Valor Diária:</dt>
+      <dd>R$ <%= @room.standard_price %></dd>
+  </div>
+
+  <div>
+      <dt>Serviços:</dt>
+      <dd><%= 'Banheiro' if @room.service.bathroom %></dd>
+      <dd><%= 'Varanda' if @room.service.bathroom %></dd>
+      <dd><%= 'Ar-condicionado' if @room.service.bathroom %></dd>
+      <dd><%= 'TV' if @room.service.bathroom %></dd>
+      <dd><%= 'Guarda-roupas' if @room.service.bathroom %></dd>
+      <dd><%= 'Cofre' if @room.service.bathroom %></dd>
+      <dd><%= 'Acessível para pessoas com deficiência' if @room.service.bathroom %></dd>
+  </div>
+
+  <div>
+    </p></p></p></p>
+    <% if @seasonal_prices.any? %>
+    <h4>Períodos programados</h4>
+    
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Data de início</th>
+            <th>Data de término</th>
+            <th>Valor da diária</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @seasonal_prices.each do |pv| %>
+          <tr>
+            <td><%= pv.name %></td>
+            <td><%= pv.start_date %></td>
+            <td><%= pv.end_date %></td>
+            <td><%= pv.value %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div>
+        <p>Não existem períodos cadastrados.</p>
+      </div>
+    <% end %>
+    
+  </div>
+</dl>

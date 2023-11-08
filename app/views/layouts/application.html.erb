@@ -18,12 +18,12 @@
           <%= current_user.email %> |
           <%= current_user.name %> |
           <%= current_user.role %> |
-          <% if current_user.Anfitrião? %>
-            <% if current_user.lodge_house %>
-              <%= link_to 'Minha pousada', current_user.lodge_house %> |
-              <%= link_to 'Cadastrar quarto', new_lodge_room_path %>
+          <% if current_user.host? %>
+            <% if current_user.lodge %>
+              <%= link_to 'Minha pousada', current_user.lodge %> |
+              <%= link_to 'Cadastrar quarto', new_room_path %>
             <% else %>
-              <%= link_to 'Criar pousada', new_lodge_house_path %> 
+              <%= link_to 'Criar pousada', new_lodge_path %> 
             <% end %>
           <% end %>
           <p></p>

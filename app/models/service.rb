@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  belongs_to :lodge_room
+  belongs_to :room
 end

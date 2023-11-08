@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @lodge_houses = LodgeHouse.ativo
+    @lodges = Lodge.ativo
   end
 end

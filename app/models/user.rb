@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  enum role: {Visitante: 0, Anfitrião: 1} 
+  enum role: {regular: 0, host: 1} 
 
-  has_one :lodge_house
+  has_one :lodge
 
   validates :name, :role, presence: true
 end

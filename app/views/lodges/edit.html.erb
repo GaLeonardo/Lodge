@@ -1,15 +1,15 @@
-<h2>Criar pousada</h2>
+<h2>Editar pousada</h2>
 
-<% if @lodge_house.errors.any? %>
+<% if @lodge.errors.any? %>
   <p>Verifique os erros abaixo:</p>
   <ul>
-    <% @lodge_house.errors.full_messages.each do |msg| %>
+    <% @lodge.errors.full_messages.each do |msg| %>
       <li> <%= msg %></li>
     <% end %>
   </ul>
 <% end %>
 
-<%= form_with model: @lodge_house do |lh| %>
+<%= form_with model: @lodge do |lh| %>
   <div>
     <%= lh.label :brand_name %>
     <%= lh.text_field :brand_name %>
@@ -92,15 +92,20 @@
 
   <div>
     <%= lh.label :check_in %>
-    <%= lh.time_field :check_in %>
+    <%= lh.text_field :check_in %>
   </div>
 
   <div>
     <%= lh.label :check_out %>
-    <%= lh.time_field :check_out %>
+    <%= lh.text_field :check_out %>
+  </div>
+  
+  <div>
+    <%= lh.label :user_id %>
+    <%= lh.collection_select :user_id, @users, :id, :name %>
   </div>
 
   <div>
-    <%= lh.submit 'Cadastrar pousada' %>
+    <%= lh.submit 'Salvar' %>
   </div>
 <% end %>

@@ -8,7 +8,7 @@ one:
   closet: false
   vault: false
   accessibility: false
-  lodge_room: one
+  room: one
 
 two:
   bathroom: false
@@ -18,4 +18,4 @@ two:
   closet: false
   vault: false
   accessibility: false
-  lodge_room: two
+  room: two

@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_lodge
-    if current_user && current_user.Anfitrião?
-      unless current_user.lodge_house
-        redirect_to new_lodge_house_path
+    if current_user && current_user.host?
+      unless current_user.lodge
+        redirect_to new_lodge_path
       end
     end
   end

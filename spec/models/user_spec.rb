@@ -4,21 +4,27 @@ RSpec.describe User, type: :model do
   describe '#valid?' do
     context 'presence' do
       it 'name is mandatory' do
-        user = User.new(name: '', email: 'jose@contato.com', password: 'strongpassword')
+        user = User.new
 
-        expect(user).not_to be_valid
+        user.valid?
+
+        expect(user.errors.include? :name).to be true
       end
 
       it 'email is mandatory' do 
-        user = User.new(name: 'José', email: '', password: 'strongpassword')
+        user = User.new
 
-        expect(user).not_to be_valid
+        user.valid?
+
+        expect(user.errors.include? :email).to be true
       end
 
       it 'password is mandatory' do 
-        user = User.new(name: 'José', email: 'jose@contato.com', password: '')
+        user = User.new
 
-        expect(user).not_to be_valid
+        user.valid?
+
+        expect(user.errors.include? :password).to be true
       end
     end
   end

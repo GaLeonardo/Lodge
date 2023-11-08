@@ -1,15 +1,15 @@
 <h2>Criar quarto</h2>
 
-<% if @lodge_room.errors.any? %>
+<% if @room.errors.any? %>
   <p>Verifique os erros abaixo:</p>
   <ul>
-    <% @lodge_room.errors.full_messages.each do |msg| %>
+    <% @room.errors.full_messages.each do |msg| %>
       <li> <%= msg %></li>
     <% end %>
   </ul>
 <% end %>
 
-<%= form_with model: @lodge_room do |lr| %>
+<%= form_with model: @room do |lr| %>
   <div>
     <%= lr.label :name %>
     <%= lr.text_field :name %>

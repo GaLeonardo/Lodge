@@ -34,7 +34,7 @@ describe 'User create account' do
     fill_in 'E-mail', with: 'jose@gmail.com'
     fill_in 'Senha', with: 'strongpassword'
     fill_in 'Confirme sua senha', with: 'strongpassword'
-    select 'Anfitrião', from: 'Tipo de Usuário'
+    select 'host', from: 'Tipo de Usuário'
     click_on 'Criar conta'
 
     expect(page).to have_content 'Boas vindas! Você realizou seu registro com sucesso.'
@@ -46,6 +46,6 @@ describe 'User create account' do
 
     user = User.last
     expect(user.name).to eq 'José'
-    expect(user.role).to eq 'Anfitrião'
+    expect(user.role).to eq 'host'
   end
 end

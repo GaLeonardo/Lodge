@@ -1,15 +1,15 @@
-<h2>Editar pousada</h2>
+<h2>Criar pousada</h2>
 
-<% if @lodge_house.errors.any? %>
+<% if @lodge.errors.any? %>
   <p>Verifique os erros abaixo:</p>
   <ul>
-    <% @lodge_house.errors.full_messages.each do |msg| %>
+    <% @lodge.errors.full_messages.each do |msg| %>
       <li> <%= msg %></li>
     <% end %>
   </ul>
 <% end %>
 
-<%= form_with model: @lodge_house do |lh| %>
+<%= form_with model: @lodge do |lh| %>
   <div>
     <%= lh.label :brand_name %>
     <%= lh.text_field :brand_name %>
@@ -59,12 +59,7 @@
     <%= lh.label :description %>
     <%= lh.text_area :description %>
   </div>
-
-  <div>
-    <%= lh.label :payment_methods_id %>
-    <%= lh.collection_select :payment_methods_id, @payment_methods, :id, :name %>
-  </div>
-
+  
   <div>
     <%= lh.label :pets %>
 
@@ -92,20 +87,48 @@
 
   <div>
     <%= lh.label :check_in %>
-    <%= lh.text_field :check_in %>
+    <%= lh.time_field :check_in %>
   </div>
 
   <div>
     <%= lh.label :check_out %>
-    <%= lh.text_field :check_out %>
-  </div>
-  
-  <div>
-    <%= lh.label :user_id %>
-    <%= lh.collection_select :user_id, @users, :id, :name %>
+    <%= lh.time_field :check_out %>
   </div>
 
   <div>
-    <%= lh.submit 'Salvar' %>
+    <%= fields_for :payment_method do |pf| %>
+      <h2>Método de pagamento</h2>
+      <div>
+        <%= pf.label :bank_transfer %>
+        <%= pf.check_box :bank_transfer %>
+      </div>
+
+      <div>
+        <%= pf.label :credit_card %>
+        <%= pf.check_box :credit_card %>
+      </div>
+
+      <div>
+        <%= pf.label :debit_card %>
+        <%= pf.check_box :debit_card %>
+      </div>
+
+      <div>
+        <%= pf.label :cash %>
+        <%= pf.check_box :cash %>
+      </div>
+
+      <div>
+        <%= pf.label :deposit %>
+        <%= pf.check_box :deposit %>
+      </div>
+    <% end %>
+  </div>
+
+  
+
+  <div>
+    <br>
+    <%= lh.submit 'Cadastrar pousada' %>
   </div>
 <% end %>

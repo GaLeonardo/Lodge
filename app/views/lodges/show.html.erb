@@ -1,47 +1,51 @@
-<h2><%= @lodge_house.brand_name %></h2>
+<h2><%= @lodge.brand_name %></h2>
 
-<% if current_user && current_user.lodge_house == @lodge_house %>
-  <%= link_to 'Editar', edit_lodge_house_path %>
+<% if current_user && current_user.lodge == @lodge %>
+  <%= link_to 'Editar', edit_lodge_path %>
 <% end %>
 
 <dl>
   <div>
-    <dt><%= @lodge_house.description %></dt>
+    <dt><%= @lodge.description %></dt>
   </div></p>
   
   <div>
     <dt>Aceita pets?</dt>
-    <dd><%= @lodge_house.pets %></dd>
+    <dd><%= @lodge.pets %></dd>
   </div>
 
   <div>
     <dt>Status:</dt>
-    <dd><%= @lodge_house.status %></dd>
+    <dd><%= @lodge.status %></dd>
   </div>
 
   <div>
     <dt>Endereço:</dt>
-    <dd><%= @lodge_house.full_address %></dd>
+    <dd><%= @lodge.full_address %></dd>
   </div>
 
   <div>
     <dt>Telefone para contato:</dt>
-    <dd><%= @lodge_house.contact_number %></dd>
+    <dd><%= @lodge.contact_number %></dd>
   </div>
   
   <div>
     <dt>Email para contato:</dt>
-    <dd><%= @lodge_house.email %></dd>
+    <dd><%= @lodge.email %></dd>
   </div>
 </dl>
 
 <h2>Quartos</h2>
 
-<% if @lodge_rooms.any? %>
-  <% @lodge_rooms.each do |lr| %>
+<% if @rooms.any? %>
+  <% @rooms.each do |lr| %>
     -----------------------------------------------------
     <div>
       <h3><%= lr.name %></h3>
+    </div>
+
+    <div>
+      <%= link_to 'Adicionar valor por período', new_room_seasonal_price_path(@room_id) %> </p>
     </div>
 
     <div>
