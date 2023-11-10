@@ -30,7 +30,7 @@
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
           <p></p>
-          <%= button_to 'Entrar', new_user_session_path %>
+          <%= link_to 'Iniciar sessão', new_user_session_path %>
         <% end %>
       </nav>
     </header>

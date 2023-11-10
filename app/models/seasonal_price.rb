@@ -1,3 +1,3 @@
-class SeasonalPrices < ApplicationRecord
-  belongs_to :lodge
+class SeasonalPrice < ApplicationRecord
+  belongs_to :room
 end

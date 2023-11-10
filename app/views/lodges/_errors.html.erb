@@ -1,0 +1,8 @@
+<% if @lodge.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @lodge.errors.full_messages.each do |msg| %>
+      <li> <%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

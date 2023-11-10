@@ -21,7 +21,7 @@
 
   <div>
       <dt>Quantidade de pessoas permitida:</dt>
-      <dd><%= @room.number_people %></dd>
+      <dd><%= @room.max_people %></dd>
   </div>
 
   <div>
@@ -31,13 +31,13 @@
 
   <div>
       <dt>Serviços:</dt>
-      <dd><%= 'Banheiro' if @room.service.bathroom %></dd>
-      <dd><%= 'Varanda' if @room.service.bathroom %></dd>
-      <dd><%= 'Ar-condicionado' if @room.service.bathroom %></dd>
-      <dd><%= 'TV' if @room.service.bathroom %></dd>
-      <dd><%= 'Guarda-roupas' if @room.service.bathroom %></dd>
-      <dd><%= 'Cofre' if @room.service.bathroom %></dd>
-      <dd><%= 'Acessível para pessoas com deficiência' if @room.service.bathroom %></dd>
+      <dd><%= 'Banheiro' if @room.service.has_bathroom %></dd>
+      <dd><%= 'Varanda' if @room.service.has_balcony %></dd>
+      <dd><%= 'Ar-condicionado' if @room.service.has_air_conditioner %></dd>
+      <dd><%= 'TV' if @room.service.has_tv %></dd>
+      <dd><%= 'Guarda-roupas' if @room.service.has_closet %></dd>
+      <dd><%= 'Cofre' if @room.service.has_vault %></dd>
+      <dd><%= 'Acessível para pessoas com deficiência' if @room.service.is_accessible %></dd>
   </div>
 
   <div>

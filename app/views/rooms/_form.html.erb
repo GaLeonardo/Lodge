@@ -1,0 +1,65 @@
+<%= form_with model: @room do |lr| %>
+  <div>
+    <%= lr.label :name %>
+    <%= lr.text_field :name %>
+  </div>
+
+  <div>
+    <%= lr.label :description %>
+    <%= lr.text_field :description %>
+  </div>
+
+  <div>
+    <%= lr.label :area, 'Dimensão (m²)' %>
+    <%= lr.text_field :area %>
+  </div>
+
+  <div>
+    <%= lr.label :max_people %>
+    <%= lr.text_field :max_people %>
+  </div>
+
+  <div>
+    <%= lr.label :standard_price %>
+    <%= lr.text_field :standard_price %>
+  </div>
+
+  <div>
+    <%= lr.label :has_bathroom %>
+    <%= lr.check_box :has_bathroom %>
+  </div>
+
+  <div>
+    <%= lr.label :has_balcony %>
+    <%= lr.check_box :has_balcony %>
+  </div>
+
+  <div>
+    <%= lr.label :has_air_conditioner %>
+    <%= lr.check_box :has_air_conditioner %>
+  </div>
+
+  <div>
+    <%= lr.label :has_tv %>
+    <%= lr.check_box :has_tv %>
+  </div>
+
+  <div>
+    <%= lr.label :has_closet %>
+    <%= lr.check_box :has_closet %>
+  </div>
+
+  <div>
+    <%= lr.label :has_vault %>
+    <%= lr.check_box :has_vault %>
+  </div>
+
+  <div>
+    <%= lr.label :is_accessible %>
+    <%= lr.check_box :is_accessible %>
+  </div>
+
+  <div>
+    <%= lr.submit %>
+  </div>
+<% end %>

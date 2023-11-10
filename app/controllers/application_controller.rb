@@ -1,18 +1,17 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :require_lodge, unless: :devise_controller?
 
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :registration_number, :role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :role])
   end
 
-  def require_lodge
-    if current_user && current_user.host?
-      unless current_user.lodge
-        redirect_to new_lodge_path
-      end
+  private
+
+  def require_hosts_lodge
+    if user_signed_in? && current_user.host? && current_user.lodge.nil?
+      redirect_to new_lodge_path, alert: 'Para prosseguir, deve-se cadastrar uma pousada'
     end
   end
 end

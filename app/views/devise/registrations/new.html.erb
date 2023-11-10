@@ -27,14 +27,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, options_for_select(User.roles.map { |key, value| [key.humanize, key] }) %>
+    <br>
+    <%= f.label :role, 'Cadastrar como anfitrião?' %><br>
+    <%= f.check_box :role, {}, "host", "visitor" %>
   </div>
 
   <div class="actions">
     </p>
     <%= f.submit "Criar conta" %>
   </div>
+  <br>
 <% end %>
 
 <%= render "devise/shared/links" %>

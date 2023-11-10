@@ -1,16 +1,16 @@
 class RoomsController < ApplicationController
   def new
-    @room = LodgeRoom.new
+    @lodge = current_user.lodge
+    @room = @lodge.rooms.build
+    @service = @room.build_service
   end
 
   def create
-    @room = LodgeRoom.new(room_params)
-    @service = Service.new(service_params)
+    @lodge = current_user.lodge
+    @room = @lodge.rooms.build(room_params)
+    @service = @room.build_service(service_params)
 
-    @room.lodge = current_user.lodge
-    @service.room = @room
-
-    if @room.save && @service.save
+    if @room.save
       return redirect_to @room, notice: 'Quarto cadastrado com sucesso.'
     end
 
@@ -20,18 +20,17 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = LodgeRoom.find(params[:id])
+    @room = Room.find(params[:id])
     @seasonal_prices = @room.seasonal_prices 
-    p @seasonal_prices
   end
 
   private
 
   def room_params
-    params.require(:room).permit(:name, :description, :area, :number_people, :standard_price)
+    params.require(:room).permit(:name, :description, :area, :max_people, :standard_price)
   end
 
   def service_params
-    params.require(:room).permit(:bathroom, :balcony, :air_conditioner, :tv, :closet, :vault, :accessibility)
+    params.require(:room).permit(:has_bathroom, :has_balcony, :has_air_conditioner, :has_tv, :has_closet, :has_vault, :is_accessible)
   end
 end
