@@ -1,10 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      seasonal_price: 'Valor por período'
+      seasonal_price: 'Preço de temporada'
     attributes:
       seasonal_price:
         name: 'Nome'
         start_date: 'Data de início'
         end_date: 'Data de término'
-        value: 'Valor da diária'
+        price: 'Valor da diária'

@@ -18,13 +18,9 @@
           <%= current_user.email %> |
           <%= current_user.name %> |
           <%= current_user.role %> |
-          <% if current_user.host? %>
-            <% if current_user.lodge %>
-              <%= link_to 'Minha pousada', current_user.lodge %> |
-              <%= link_to 'Cadastrar quarto', new_room_path %>
-            <% else %>
-              <%= link_to 'Criar pousada', new_lodge_path %> 
-            <% end %>
+          <% if current_user.host? && !current_user.lodge.nil? && current_user.lodge.id %>
+            <%= link_to 'Minha pousada', current_user.lodge %> |
+            <%= link_to 'Cadastrar quarto', new_lodge_room_path(current_user.lodge) %>
           <% end %>
           <p></p>
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>

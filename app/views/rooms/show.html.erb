@@ -41,7 +41,10 @@
   </div>
 
   <div>
-    </p></p></p></p>
+    <br><br><br><br><br>
+    <div>
+      <%= link_to 'Adicionar valor por período', new_lodge_room_seasonal_price_path(@room.lodge.id, @room) %> </p>
+    </div>
     <% if @seasonal_prices.any? %>
     <h4>Períodos programados</h4>
     
@@ -60,7 +63,7 @@
             <td><%= pv.name %></td>
             <td><%= pv.start_date %></td>
             <td><%= pv.end_date %></td>
-            <td><%= pv.value %></td>
+            <td><%= pv.price %></td>
           </tr>
           <% end %>
         </tbody>

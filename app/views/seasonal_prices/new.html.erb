@@ -1,36 +1,5 @@
 <h2>Cadastrar valor por período</h2>
 
-<% if @seasonal_price.errors.any? %>
-  <p>Verifique os erros abaixo:</p>
-  <ul>
-    <% @seasonal_price.errors.full_messages.each do |msg| %>
-      <li> <%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'errors' %>
 
-<%= form_with model: @seasonal_price, url: [:room, @seasonal_price] do |pv| %>
-  <div>
-    <%= pv.label :name %>
-    <%= pv.text_field :name %>
-  </div>
-
-  <div>
-    <%= pv.label :start_date %>
-    <%= pv.date_field :start_date %>
-  </div>
-
-  <div>
-    <%= pv.label :end_date %>
-    <%= pv.date_field :end_date %>
-  </div>
-
-  <div>
-    <%= pv.label :value %>
-    <%= pv.text_field :value %>
-  </div>
-
-  <div>
-    <%= pv.submit 'Salvar' %>
-  </div>
-<% end %>
+<%= render 'form' %>

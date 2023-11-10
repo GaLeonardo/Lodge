@@ -63,8 +63,4 @@ class LodgesController < ApplicationController
   def payment_method_params
     params.require(:payment_method).permit(:bank_transfer, :credit_card, :debit_card, :cash, :deposit)
   end
-
-  def set_room_id
-    @room_id = current_user.lodge.rooms.find(params[:id])
-  end
 end

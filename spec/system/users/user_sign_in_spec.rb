@@ -5,23 +5,23 @@ describe 'User autenticates' do
     user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Iniciar sessão'
     fill_in 'E-mail', with: 'jose@email.com'
     fill_in 'Senha', with: 'strongpassword'
     click_on 'Log in'
 
-    expect(page).to have_content 'Login efetuado com sucesso.'
+    expect(page).to have_content 'Para prosseguir, deve-se cadastrar uma pousada'
     expect(page).to have_content 'jose@email.com'
     expect(page).to have_content 'Criar pousada'
     expect(page).to have_button 'Sair'
-    expect(page).not_to have_button 'Entrar'
+    expect(page).not_to have_button 'Iniciar sessão'
   end
   
   it 'successfully as user' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'Visitante')
+    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'visitor')
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Iniciar sessão'
     fill_in 'E-mail', with: 'jose@email.com'
     fill_in 'Senha', with: 'strongpassword'
     click_on 'Log in'
@@ -30,12 +30,12 @@ describe 'User autenticates' do
     expect(page).to have_content 'jose@email.com'
     expect(page).not_to have_content 'Criar pousada'
     expect(page).to have_button 'Sair'
-    expect(page).not_to have_button 'Entrar'
+    expect(page).not_to have_button 'Iniciar sessão'
   end
 
   it 'but does not have account' do
     visit root_path
-    click_on 'Entrar'
+    click_on 'Iniciar sessão'
     fill_in 'E-mail', with: 'jose@email.com'
     fill_in 'Senha', with: 'strongpassword'
     click_on 'Log in'

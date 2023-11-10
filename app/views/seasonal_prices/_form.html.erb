@@ -1,0 +1,25 @@
+<%= form_with model: [@lodge, @room, @seasonal_price] do |sp| %>
+  <div>
+    <%= sp.label :name %>
+    <%= sp.text_field :name %>
+  </div>
+
+  <div>
+    <%= sp.label :start_date %>
+    <%= sp.date_field :start_date %>
+  </div>
+
+  <div>
+    <%= sp.label :end_date %>
+    <%= sp.date_field :end_date %>
+  </div>
+
+  <div>
+    <%= sp.label :price %>
+    <%= sp.text_field :price %>
+  </div>
+  </p>
+  <div>
+    <%= sp.submit %>
+  </div>
+<% end %>

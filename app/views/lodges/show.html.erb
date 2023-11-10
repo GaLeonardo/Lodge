@@ -41,11 +41,7 @@
   <% @rooms.each do |lr| %>
     -----------------------------------------------------
     <div>
-      <h3><%= lr.name %></h3>
-    </div>
-
-    <div>
-      <%= link_to 'Adicionar valor por período', new_room_seasonal_price_path(@room_id) %> </p>
+      <h3><%= link_to lr.name, [@lodge, lr] %></h3>
     </div>
 
     <div>
@@ -65,7 +61,7 @@
 
       <div>
           <dt>Quantidade de pessoas permitida:</dt>
-          <dd><%= lr.number_people %></dd>
+          <dd><%= lr.max_people %></dd>
       </div>
 
       <div>
@@ -75,13 +71,14 @@
 
       <div>
           <dt>Serviços:</dt>
-          <dd><%= 'Banheiro' if lr.service.bathroom %></dd>
-          <dd><%= 'Varanda' if lr.service.bathroom %></dd>
-          <dd><%= 'Ar-condicionado' if lr.service.bathroom %></dd>
-          <dd><%= 'TV' if lr.service.bathroom %></dd>
-          <dd><%= 'Guarda-roupas' if lr.service.bathroom %></dd>
-          <dd><%= 'Cofre' if lr.service.bathroom %></dd>
-          <dd><%= 'Acessível para pessoas com deficiência' if lr.service.bathroom %></dd>
+          <%= @services %>
+          <dd><%= 'Banheiro' if lr.service %></dd>
+          <dd><%= 'Varanda' if lr.service %></dd>
+          <dd><%= 'Ar-condicionado' if lr.service %></dd>
+          <dd><%= 'TV' if lr.service %></dd>
+          <dd><%= 'Guarda-roupas' if lr.service %></dd>
+          <dd><%= 'Cofre' if lr.service %></dd>
+          <dd><%= 'Acessível para pessoas com deficiência' if lr.service %></dd>
       </div>
     </dl>
   <% end %>

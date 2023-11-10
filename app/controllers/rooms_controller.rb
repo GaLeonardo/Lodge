@@ -11,17 +11,17 @@ class RoomsController < ApplicationController
     @service = @room.build_service(service_params)
 
     if @room.save
-      return redirect_to @room, notice: 'Quarto cadastrado com sucesso.'
+      return redirect_to [@lodge, @room], notice: 'Quarto cadastrado com sucesso.'
     end
 
-    flash[:notice] = 'Não foi possível cadastrar o quarto.'
+    flash.now[:notice] = 'Não foi possível cadastrar o quarto.'
 
     render :new
   end
 
   def show
     @room = Room.find(params[:id])
-    @seasonal_prices = @room.seasonal_prices 
+    @seasonal_prices = @room.seasonal_prices
   end
 
   private
