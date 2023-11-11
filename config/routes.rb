@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
     resources :rooms, only: [:new, :create, :show] do
-      resources :seasonal_prices, only: [:new, :create, :show]
+      resources :seasonal_prices, only: [:new, :create, :show, :edit, :update]
     end
   end 
 

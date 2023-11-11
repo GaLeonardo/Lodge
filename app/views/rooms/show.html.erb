@@ -43,11 +43,11 @@
   <div>
     <br><br><br><br><br>
     <div>
-      <%= link_to 'Adicionar valor por período', new_lodge_room_seasonal_price_path(@room.lodge.id, @room) %> </p>
+      <h4>Períodos programados</h4>
+      <%= link_to 'Adicionar valor por período', new_lodge_room_seasonal_price_path(@room.lodge.id, @room) %> <br>
+      <%= link_to 'Ver períodos programados para este quarto', lodge_room_seasonal_price_path(@room.lodge.id, @room) %> <br><br>
     </div>
     <% if @seasonal_prices.any? %>
-    <h4>Períodos programados</h4>
-    
       <table>
         <thead>
           <tr>
@@ -55,15 +55,17 @@
             <th>Data de início</th>
             <th>Data de término</th>
             <th>Valor da diária</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
-          <% @seasonal_prices.each do |pv| %>
+          <% @seasonal_prices.each do |sp| %>
           <tr>
-            <td><%= pv.name %></td>
-            <td><%= pv.start_date %></td>
-            <td><%= pv.end_date %></td>
-            <td><%= pv.price %></td>
+            <td><%= sp.name %></td>
+            <td><%= sp.start_date %></td>
+            <td><%= sp.end_date %></td>
+            <td>R$ <%= sp.price.to_f / 100 %></td>
+            <td><%= link_to 'Editar período', edit_lodge_room_seasonal_price_path(sp.room.lodge.id, sp.room.id, sp) %></td>
           </tr>
           <% end %>
         </tbody>

@@ -1,0 +1,30 @@
+<h2>Períodos programados para o quarto <%= @room.name %></h2>
+
+<% if @seasonal_prices.any? %>
+<table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data de início</th>
+        <th>Data de término</th>
+        <th>Valor da diária</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @seasonal_prices.each do |sp| %>
+      <tr>
+        <td><%= sp.name %></td>
+        <td><%= sp.start_date %></td>
+        <td><%= sp.end_date %></td>
+        <td>R$ <%= sp.price %></td>
+        <td><%= link_to 'Editar período', edit_lodge_room_seasonal_price_path(sp.room.lodge.id, sp.room.id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div>
+    <p>Não existem períodos cadastrados.</p>
+  </div>
+<% end %>
