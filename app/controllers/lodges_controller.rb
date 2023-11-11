@@ -1,7 +1,7 @@
 class LodgesController < ApplicationController
-  before_action :authenticate_user!, expect: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :require_hosts_lodge, except: [:new, :create]
-  before_action :user_is_host, expect: [:index]
+  before_action :user_is_host, except: [:index]
 
   def index
     @lodge = Lodge.find_by(user_id: current_user.id)

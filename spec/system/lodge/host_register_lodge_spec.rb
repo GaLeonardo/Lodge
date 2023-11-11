@@ -77,4 +77,8 @@ describe 'Host create lodge' do
     expect(page).to have_content 'Check-out não pode ficar em branco'
     expect(page).to have_content 'Status não pode ficar em branco'
   end
+
+  it '' do
+    
+  end
 end

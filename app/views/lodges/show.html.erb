@@ -15,13 +15,8 @@
   </div>
 
   <div>
-    <dt>Status:</dt>
-    <dd><%= @lodge.status %></dd>
-  </div>
-
-  <div>
     <dt>Endereço:</dt>
-    <dd><%= @lodge.full_address %></dd>
+    <dd><%= @lodge.full_address %>, <%= @lodge.city %>, <%= @lodge.state %> - <%= @lodge.zip_code %></dd>
   </div>
 
   <div>
@@ -32,6 +27,21 @@
   <div>
     <dt>Email para contato:</dt>
     <dd><%= @lodge.email %></dd>
+  </div>
+
+  <div>
+    <dt>Politicas de uso:</dt>
+    <dd><%= @lodge.terms_of_service %></dd>
+  </div>
+
+  <div>
+    <dt>Check-in:</dt>
+    <dd><%= @lodge.check_in %></dd>
+  </div>
+
+  <div>
+    <dt>Check_out:</dt>
+    <dd><%= @lodge.check_out %></dd>
   </div>
 </dl>
 
