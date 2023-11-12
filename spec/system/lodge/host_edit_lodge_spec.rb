@@ -17,6 +17,6 @@ describe 'Host edit lodge' do
     expect(page).to have_content 'Pousada editada com sucesso!'
     expect(page).to have_content 'Telefone para contato: 1433321758'
     expect(page).to have_content 'Endereço: Rua das Flores, 100'
-    expect(page).to have_content 'Aceita pets? nao'
+    expect(page).to have_content 'Aceita pets: Nao'
   end
 end

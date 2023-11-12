@@ -1,7 +1,7 @@
 class LodgesController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :city_list]
   before_action :require_hosts_lodge, except: [:new, :create]
-  before_action :user_is_host, except: [:index]
+  before_action :user_is_host, except: [:show, :city_list]
 
   def index
     @lodge = Lodge.find_by(user_id: current_user.id)
@@ -46,6 +46,10 @@ class LodgesController < ApplicationController
 
     flash.now[:notice] = 'Não foi possível editar a pousada!'
     render :edit
+  end
+
+  def city_list
+    @lodges = Lodge.ativo.where(city: params[:city]).order(:brand_name)
   end
 
   private

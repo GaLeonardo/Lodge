@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
+    get 'city_list', on: :collection
     resources :rooms, only: [:new, :create, :show] do
       resources :seasonal_prices, only: [:new, :create, :show, :edit, :update]
     end

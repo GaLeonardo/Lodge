@@ -1,5 +1,18 @@
 <h1>Pousadas</h1>
 
+<div id='cities'>
+  <% if @cities.any? %>
+    <h2>Hoteis no Brasil</h2>
+    <ul>
+    <% @cities.each do |city| %>
+        <li>
+          <%= link_to city, city_list_lodges_path(city: city) %>
+        </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <div id='recent-lodges'>
 <% if @recent_lodges.any? %>
   <h2>Novas pousadas</h2>
@@ -20,8 +33,7 @@
 
 <div id='all-lodges'>
   <h2>Demais pousadas</h2>
-  <% @lodges.each do |lh| %>
-    
+  <% @lodges.each do |lh| %>    
     -------------------------------------------------
     <div>
       <h3><%= link_to lh.brand_name, lh %></h3>

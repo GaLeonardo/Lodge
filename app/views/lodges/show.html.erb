@@ -8,11 +8,6 @@
   <div>
     <dt><%= @lodge.description %></dt>
   </div></p>
-  
-  <div>
-    <dt>Aceita pets?</dt>
-    <dd><%= @lodge.pets %></dd>
-  </div>
 
   <div>
     <dt>Endereço:</dt>
@@ -35,12 +30,17 @@
   </div>
 
   <div>
+    <dt>Aceita pets:</dt>
+    <dd><%= @lodge.pets.capitalize %></dd>
+  </div>
+
+  <div>
     <dt>Check-in:</dt>
     <dd><%= @lodge.check_in %></dd>
   </div>
 
   <div>
-    <dt>Check_out:</dt>
+    <dt>Check-out:</dt>
     <dd><%= @lodge.check_out %></dd>
   </div>
 </dl>
