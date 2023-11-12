@@ -1,0 +1,11 @@
+  <% @lodges.each do |lh| %>    
+    -------------------------------------------------
+    <div>
+      <h3><%= link_to lh.brand_name, lh %></h3>
+      <p><%= lh.description %></p>
+    </div>
+
+    <div>
+      <%= lh.city %>, <%= lh.state %> <br/>
+    </div>
+  <% end %>

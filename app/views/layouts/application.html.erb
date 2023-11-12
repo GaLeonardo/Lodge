@@ -28,6 +28,12 @@
           <p></p>
           <%= link_to 'Iniciar sessão', new_user_session_path %>
         <% end %>
+        <div id='search-box'>
+          <%= form_tag(search_lodges_path, :method => 'get') do %>
+            <%= search_field_tag :search, params[:search], placeholder: 'type' %>
+            <%= button_tag 'Buscar', :name => nil %>
+          <% end %>
+        </div>
       </nav>
     </header>
     <main>

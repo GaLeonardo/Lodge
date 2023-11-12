@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
     get 'city_list', on: :collection
+    get 'search', on: :collection
+    
     resources :rooms, only: [:new, :create, :show] do
       resources :seasonal_prices, only: [:new, :create, :show, :edit, :update]
     end

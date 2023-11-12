@@ -1,7 +1,7 @@
 class LodgesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :city_list]
+  before_action :authenticate_user!, except: [:show, :city_list, :search]
   before_action :require_hosts_lodge, except: [:new, :create]
-  before_action :user_is_host, except: [:show, :city_list]
+  before_action :user_is_host, except: [:show, :city_list, :search]
 
   def index
     @lodge = Lodge.find_by(user_id: current_user.id)
@@ -50,6 +50,15 @@ class LodgesController < ApplicationController
 
   def city_list
     @lodges = Lodge.ativo.where(city: params[:city]).order(:brand_name)
+  end
+
+  def search
+    if params[:search].blank?
+      return redirect_to root_path
+    end
+
+    @param = params[:search].downcase
+    @lodges = Lodge.ativo.search(@param)
   end
 
   private
