@@ -7,21 +7,6 @@ describe 'Host create lodge' do
     expect(page).to have_current_path new_user_session_path
   end
 
-  it 'by self registrating' do
-    visit root_path
-    click_on 'Iniciar sessão'
-    click_on 'Criar uma conta'
-    fill_in 'Nome', with: 'João'
-    fill_in 'E-mail', with: 'joao@gmail.com'
-    fill_in 'Senha', with: 'password'
-    fill_in 'Confirme sua senha', with: 'password'
-    check 'user_role'
-
-    click_on 'Criar conta'
-
-    expect(page).to have_current_path new_lodge_path
-  end
-
   it 'if is host' do
     user = User.create!(name: 'João', email: 'joao@gmail.com', password: 'password', role: :visitor)
 
@@ -32,7 +17,7 @@ describe 'Host create lodge' do
     expect(page).to have_content 'Acesso não autorizado.'
   end
 
-  it 'can not visit homepage until register a lodge' do
+  it 'cannot visit homepage until register a lodge' do
     user = User.create!(name: 'João', email: 'joao@gmail.com', password: 'password', role: :host)
 
     login_as user
@@ -41,7 +26,7 @@ describe 'Host create lodge' do
     expect(page).to have_current_path new_lodge_path
   end
 
-  it 'but miss all datas and see errors' do
+  it 'miss all datas and see errors' do
     user = User.create!(name: 'João', email: 'joao@gmail.com', password: 'password', role: :host)
 
     login_as user
@@ -76,9 +61,5 @@ describe 'Host create lodge' do
     expect(page).to have_content 'Check-in não pode ficar em branco'
     expect(page).to have_content 'Check-out não pode ficar em branco'
     expect(page).to have_content 'Status não pode ficar em branco'
-  end
-
-  it '' do
-    
   end
 end

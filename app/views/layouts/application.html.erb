@@ -29,8 +29,9 @@
           <%= link_to 'Iniciar sessão', new_user_session_path %>
         <% end %>
         <div id='search-box'>
+          <br>
           <%= form_tag(search_lodges_path, :method => 'get') do %>
-            <%= search_field_tag :search, params[:search], placeholder: 'type' %>
+            <%= search_field_tag :search, params[:search], placeholder: 'Buscar' %>
             <%= button_tag 'Buscar', :name => nil %>
           <% end %>
         </div>

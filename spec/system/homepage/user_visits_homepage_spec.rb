@@ -57,7 +57,23 @@ describe 'User visits homepage' do
     fourth_user = User.create!(name: 'Ricardo', email: 'ricardo@email.com', password: 'twowaymorestrongerpassword', role: 'host')
     fifth_user = User.create!(name: 'Renan', email: 'renan@email.com', password: 'evenmorethanricardopassword', role: 'host')
 
-    user.create_lodge!(corporate_name: 'Pousada Sol Nascente LTDA', brand_name: 'Pousada Sol Nascente', registration_number: '01514184897000136', full_address: 'Rua das Águas, 10', city: 'São Paulo', state: 'SP', email: 'pousadasolnascente@contato.com', zip_code: '01100036', contact_number: '14998548758', description: 'Uma pousada com maravilhas do campo e vistas inimagináveis.', pets: 1, terms_of_service: 'Proíbido som alto', check_in: '11:30', check_out: '12:00', status: 1)    
+    user.create_lodge!(
+      corporate_name: 'Pousada Sol Nascente LTDA', 
+      brand_name: 'Pousada Sol Nascente', 
+      registration_number: '01514184897000136', 
+      full_address: 'Rua das Águas, 10', 
+      city: 'São Paulo', 
+      state: 'SP', 
+      email: 'pousadasolnascente@contato.com', 
+      zip_code: '01100036', 
+      contact_number: '14998548758', 
+      description: 'Uma pousada com maravilhas do campo e vistas inimagináveis.', 
+      pets: 1, 
+      terms_of_service: 'Proíbido som alto', 
+      check_in: '11:30', 
+      check_out: '12:00', 
+      status: 1
+    )    
     second_user.create_lodge!(
       corporate_name: 'Pousada Charme da Montanha Ltda',
       brand_name: 'Charme da Montanha',

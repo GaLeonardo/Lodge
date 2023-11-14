@@ -41,10 +41,10 @@ class LodgesController < ApplicationController
     @lodge = Lodge.find(params[:id])
 
     if @lodge.update(lodge_params)
-      return redirect_to @lodge, notice: 'Pousada editada com sucesso!'
+      return redirect_to @lodge, notice: 'Pousada editada com sucesso.'
     end
 
-    flash.now[:notice] = 'Não foi possível editar a pousada!'
+    flash.now[:notice] = 'Não foi possível editar a pousada.'
     render :edit
   end
 
@@ -54,7 +54,7 @@ class LodgesController < ApplicationController
 
   def search
     if params[:search].blank?
-      return redirect_to root_path
+      return redirect_to root_path, alert: 'A pesquisa não pode ser vazia'
     end
 
     @param = params[:search].downcase

@@ -42,6 +42,7 @@ describe 'User create account' do
     expect(page).to have_content 'Criar pousada'
     expect(page).not_to have_button 'Iniciar sessão'
     expect(page).to have_button 'Sair'
+    expect(page).to have_current_path new_lodge_path
 
     user = User.last
     expect(user.name).to eq 'José'
