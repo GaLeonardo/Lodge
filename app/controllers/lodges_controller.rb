@@ -9,13 +9,14 @@ class LodgesController < ApplicationController
 
   def new
     @lodge = Lodge.new
-    @payment_methods = @lodge.build_payment_method
-    @users = User.all
+    @payment_method = @lodge.build_payment_method
   end
 
   def create
     @lodge = current_user.build_lodge(lodge_params)
     @payment_method = @lodge.build_payment_method(payment_method_params)
+    @payment_method.valid?
+
 
     if @lodge.save
       return redirect_to @lodge, notice: 'Pousada cadastrada com sucesso.'
@@ -33,8 +34,7 @@ class LodgesController < ApplicationController
 
   def edit
     @lodge = current_user.lodge
-    @payment_methods = PaymentMethod.all
-    @users = User.all
+    @payment_methods = @lodge.payment_method
   end
 
   def update

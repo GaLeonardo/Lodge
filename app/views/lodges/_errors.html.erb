@@ -4,5 +4,10 @@
     <% @lodge.errors.full_messages.each do |msg| %>
       <li> <%= msg %></li>
     <% end %>
+  <% if @payment_method && @payment_method.errors.any? %>
+      <% @payment_method.errors.full_messages.each do |msg| %>
+        <li> <%= msg %></li>
+      <% end %>
+  <% end %>
   </ul>
 <% end %>

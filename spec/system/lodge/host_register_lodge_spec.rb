@@ -61,5 +61,6 @@ describe 'Host create lodge' do
     expect(page).to have_content 'Check-in não pode ficar em branco'
     expect(page).to have_content 'Check-out não pode ficar em branco'
     expect(page).to have_content 'Status não pode ficar em branco'
+    expect(page).to have_content 'Pousada deve ter ao menos um método de pagamento'
   end
 end

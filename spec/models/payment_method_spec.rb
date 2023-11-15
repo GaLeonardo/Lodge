@@ -16,7 +16,7 @@ RSpec.describe PaymentMethod, type: :model do
 
         payment_method.valid?
 
-        expect(payment_method.errors.include? :payment_method).to be true
+        expect(payment_method.errors.include? 'Pousada').to be true
       end
     end
   end

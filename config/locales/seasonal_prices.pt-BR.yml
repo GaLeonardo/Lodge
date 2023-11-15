@@ -8,3 +8,9 @@ pt-BR:
         start_date: 'Data de início'
         end_date: 'Data de término'
         price: 'Valor da diária'
+  errors:
+    messages:
+      end_date_before_start_date: 'não pode ser anterior ou igual a data de início.'
+      start_date_past: 'não pode ser no passado.'
+      conflict_with_other_date: 'não pode ter conflito com outros períodos.'
+      
