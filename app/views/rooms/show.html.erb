@@ -2,6 +2,7 @@
 
 <div>
   <h3><%= @room.name %></h3>
+  <p><%= link_to 'Editar quarto', edit_lodge_room_path%></p>
 </div>
 
 <div>
@@ -41,7 +42,7 @@
   </div>
 
   <div>
-    <br><br><br><br><br>
+    <br><br>
     <div>
       <h4>Períodos programados</h4>
       <%= link_to 'Adicionar valor por período', new_lodge_room_seasonal_price_path(@room.lodge.id, @room) %> <br>

@@ -6,7 +6,7 @@
 
   <div>
     <%= lr.label :description %>
-    <%= lr.text_field :description %>
+    <%= lr.text_area :description %>
   </div>
 
   <div>
@@ -26,37 +26,37 @@
 
   <div>
     <%= lr.label :has_bathroom %>
-    <%= lr.check_box :has_bathroom %>
+    <%= lr.check_box :has_bathroom, { checked: @room.service.has_bathroom } %>
   </div>
 
   <div>
     <%= lr.label :has_balcony %>
-    <%= lr.check_box :has_balcony %>
+    <%= lr.check_box :has_balcony, { checked: @room.service.has_balcony } %>
   </div>
 
   <div>
     <%= lr.label :has_air_conditioner %>
-    <%= lr.check_box :has_air_conditioner %>
+    <%= lr.check_box :has_air_conditioner, { checked: @room.service.has_air_conditioner } %>
   </div>
 
   <div>
     <%= lr.label :has_tv %>
-    <%= lr.check_box :has_tv %>
+    <%= lr.check_box :has_tv, { checked: @room.service.has_tv } %>
   </div>
 
   <div>
     <%= lr.label :has_closet %>
-    <%= lr.check_box :has_closet %>
+    <%= lr.check_box :has_closet, { checked: @room.service.has_closet } %>
   </div>
 
   <div>
     <%= lr.label :has_vault %>
-    <%= lr.check_box :has_vault %>
+    <%= lr.check_box :has_vault, { checked: @room.service.has_vault } %>
   </div>
 
   <div>
     <%= lr.label :is_accessible %>
-    <%= lr.check_box :is_accessible %>
+    <%= lr.check_box :is_accessible, { checked: @room.service.is_accessible } %>
   </div>
 
   <div>

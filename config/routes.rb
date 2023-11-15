@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'city_list', on: :collection
     get 'search', on: :collection
     
-    resources :rooms, only: [:new, :create, :show] do
+    resources :rooms, only: [:new, :create, :edit, :update, :show] do
       resources :seasonal_prices, only: [:new, :create, :show, :edit, :update]
     end
   end 

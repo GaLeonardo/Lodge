@@ -1,7 +1,40 @@
 require 'rails_helper'
 
 describe 'Host edit lodge' do
-  it 'by homepage and see all options' do 
+  it 'and displays errors for invalid input' do
+    user = User.create!(
+      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
+    )
+    lodge = user.create_lodge!(
+      corporate_name: 'Pousada Sol Nascente LTDA', 
+      brand_name: 'Pousada Sol Nascente', 
+      registration_number: '01514184897000136', 
+      full_address: 'Rua das Águas, 10', 
+      city: 'São Paulo', 
+      state: 'SP', 
+      email: 'pousadasolnascente@contato.com', 
+      zip_code: '01100036', 
+      contact_number: '14998548758', 
+      description: 'Uma pousada com maravilhas do campo e vistas inimagináveis', 
+      pets: 1, 
+      terms_of_service: 'Proíbido som alto', 
+      check_in: '11:30', 
+      check_out: '12:00', 
+      status: 1
+    )
+
+    login_as user
+    visit edit_lodge_path(lodge)
+    fill_in 'Telefone', with: ''
+    fill_in 'CNPJ', with: ''
+    click_on 'Atualizar Pousada'
+
+    expect(page).to have_content 'Não foi possível editar a pousada.'
+    expect(page).to have_content 'CNPJ não pode ficar em branco'
+    expect(page).to have_content 'Telefone não pode ficar em branco'
+  end
+
+  it 'from homepage and see all options' do 
     user = User.create!(
       name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
     )
@@ -40,39 +73,6 @@ describe 'Host edit lodge' do
     expect(page).to have_content 'Descrição'
     expect(page).to have_content 'Check-in'
     expect(page).to have_content 'Check-out'
-  end
-
-  it 'and displays errors for invalid input' do
-    user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
-    )
-    lodge = user.create_lodge!(
-      corporate_name: 'Pousada Sol Nascente LTDA', 
-      brand_name: 'Pousada Sol Nascente', 
-      registration_number: '01514184897000136', 
-      full_address: 'Rua das Águas, 10', 
-      city: 'São Paulo', 
-      state: 'SP', 
-      email: 'pousadasolnascente@contato.com', 
-      zip_code: '01100036', 
-      contact_number: '14998548758', 
-      description: 'Uma pousada com maravilhas do campo e vistas inimagináveis', 
-      pets: 1, 
-      terms_of_service: 'Proíbido som alto', 
-      check_in: '11:30', 
-      check_out: '12:00', 
-      status: 1
-    )
-
-    login_as user
-    visit edit_lodge_path(lodge)
-    fill_in 'Telefone', with: ''
-    fill_in 'CNPJ', with: ''
-    click_on 'Atualizar Pousada'
-
-    expect(page).to have_content 'Não foi possível editar a pousada.'
-    expect(page).to have_content 'CNPJ não pode ficar em branco'
-    expect(page).to have_content 'Telefone não pode ficar em branco'
   end
 
   it 'and prevents unauthorized access to edit page' do

@@ -4,8 +4,8 @@ pt-BR:
       room: 'Quarto'
     attributes:
       room:
-        name: 'Nome'
-        description: 'Descrição'
+        name: 'Nome do quarto'
+        description: 'Descrição do quarto'
         area: 'Área'
         max_people: 'Quantidade de pessoas permitida'
         standard_price: 'Valor diário padrão'
