@@ -1,0 +1,21 @@
+<h2>Confirmação da Reserva</h2>
+<h3>Pré-Reserva</h3>
+
+<div>
+  <dl>
+    <dt>Quarto:</dt>
+    <dd><%= @reservation.room.name %></dd>
+
+    <dt>Check-in:</dt>
+    <dd><%= I18n.localize @reservation.start_date %></dd>
+
+    <dt>Check-out:</dt>
+    <dd><%= I18n.localize @reservation.end_date %></dd>
+
+    <dt>Número de hóspedes:</dt>
+    <dd><%= @reservation.number_guests %></dd>
+
+    <dt>Valor total das diárias:</dt>
+    <dd>R$ <%= @reservation.total_price %>,00</dd>
+  </dl>
+</div>

@@ -2,7 +2,10 @@
 
 <div>
   <h3><%= @room.name %></h3>
-  <p><%= link_to 'Editar quarto', edit_lodge_room_path%></p>
+  <% if current_user && @lodge.user == current_user %>
+    <p><%= link_to 'Editar quarto', edit_lodge_room_path%></p>
+  <% end %>
+  <p><%= link_to 'Escolher Datas', new_lodge_room_reservation_path(@lodge, @room) %></p>
 </div>
 
 <div>

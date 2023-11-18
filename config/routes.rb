@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     
     resources :rooms, only: [:new, :create, :edit, :update, :show] do
       resources :seasonal_prices, only: [:new, :create, :show, :edit, :update]
+      resources :reservations, shallow: true, only: [:new, :create] do
+        get 'confirmate', on: :member
+      end
     end
   end 
 
