@@ -1,11 +1,17 @@
 pt-BR:
   activerecord:
     models:
-      reservation: 'Reserva'
+      reservation: Reserva
     attributes:
       reservation:
         start_date: Data de check-in
         end_date: Data de check-out
         total_price: Valor total das diárias
-        status: Status da pousada
         number_guests: Número de hóspedes
+        status: Status da reserva
+      reservation/status:
+        pending: Pendente
+        confirmed: Confirmado
+        active: Ativo
+        canceled: Cancelado
+        finished: Finalizado

@@ -18,4 +18,6 @@
     <dt>Valor total das diárias:</dt>
     <dd>R$ <%= @reservation.total_price %>,00</dd>
   </dl>
+
+  <%= button_to 'Confirmar Reserva', confirm_reservation_path(@reservation), method: :post %>
 </div>

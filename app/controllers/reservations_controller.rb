@@ -1,13 +1,13 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!, only: [:confirm]
-  before_action :get_lodge_and_room, except: [:confirmate, :confirm]
+  before_action :get_lodge_and_room, except: [:confirmate, :confirm, :show]
+  before_action :get_reservation, only: [:confirmate, :confirm, :show]
 
   def new
     @reservation = @room.reservations.build
   end
 
   def confirmate
-    @reservation = Reservation.find(params[:id])
     @lodge = @reservation.room.lodge
   end
 
@@ -23,7 +23,14 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
+    if @reservation.update(status: 1, user: current_user)
+      redirect_to @reservation, notice: 'Quarto reservado com sucesso!'
+    end
+  end
 
+  def show
+    @lodge = @reservation.room.lodge
+    @room = @reservation.room
   end
 
   private
@@ -39,5 +46,9 @@ class ReservationsController < ApplicationController
   def get_lodge_and_room
     @lodge = Lodge.find(params[:lodge_id])
     @room = @lodge.rooms.find(params[:room_id])
+  end
+
+  def get_reservation
+    @reservation = Reservation.find(params[:id])
   end
 end

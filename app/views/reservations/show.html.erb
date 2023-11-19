@@ -1,0 +1,27 @@
+<h2>Minhas Reservas</h2>
+
+<dl>
+  <dd>Pousada:</dd>
+  <dt><%= @lodge.brand_name %></dt>
+
+  <dd>Quarto:</dd>
+  <dt><%= @room.name %></dt>
+
+  <dd>Check-in:</dd>
+  <dt><%= I18n.l @reservation.start_date %></dt>
+
+  <dd>Check-out:</dd>
+  <dt><%= I18n.l @reservation.end_date %></dt>
+
+  <dd>Número de hóspedes:</dd>
+  <dt><%= @reservation.number_guests %></dt>
+
+  <dd>Valor total das diárias:</dd>
+  <dt>R$ <%= @reservation.total_price %>,00</dt>
+
+  <dd>Código da reserva:</dd>
+  <dt><%= @reservation.code %></dt>
+
+  <dd>Status da reserva:</dd>
+  <dt><%= Reservation.human_attribute_name("status.#{@reservation.status}") %></dt>
+</dl>
