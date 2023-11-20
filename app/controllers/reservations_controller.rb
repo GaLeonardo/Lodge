@@ -18,13 +18,13 @@ class ReservationsController < ApplicationController
       return redirect_to confirmate_reservation_path(@reservation)
     end
 
-    flash.now[:notice] = "Não foi possível realizar a reserva"
+    flash.now[:notice] = "Não foi possível realizar a reserva."
     render 'new'
   end
 
   def confirm
     if @reservation.update(status: 1, user: current_user)
-      redirect_to @reservation, notice: 'Quarto reservado com sucesso!'
+      redirect_to @reservation, notice: 'Quarto reservado com sucesso.'
     end
   end
 

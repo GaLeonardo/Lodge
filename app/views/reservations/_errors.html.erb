@@ -1,0 +1,8 @@
+<% if @reservation.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @reservation.errors.full_messages.each do |msg| %>
+      <li> <%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

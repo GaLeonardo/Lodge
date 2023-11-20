@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_000456) do
     t.string "name"
     t.string "description"
     t.integer "area"
-    t.integer "max_people"
+    t.integer "max_capacity"
     t.integer "standard_price"
     t.integer "lodge_id", null: false
     t.datetime "created_at", null: false

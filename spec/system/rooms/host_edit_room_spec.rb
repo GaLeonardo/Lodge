@@ -29,7 +29,7 @@ describe 'Host edit room' do
       name: 'Quarto Duplo de Luxo', 
       description: 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.', 
       area: '18', 
-      max_people: '2', 
+      max_capacity: '2', 
       standard_price: '150'
     )
     room.create_service(
@@ -75,7 +75,7 @@ describe 'Host edit room' do
       name: 'Quarto Duplo de Luxo', 
       description: 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.', 
       area: '18', 
-      max_people: '2', 
+      max_capacity: '2', 
       standard_price: '150'
     )
     room.create_service(
@@ -136,7 +136,7 @@ describe 'Host edit room' do
       name: 'Quarto Duplo de Luxo', 
       description: 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.', 
       area: '18', 
-      max_people: '2', 
+      max_capacity: '2', 
       standard_price: '150'
     )
     room.create_service(
@@ -194,7 +194,7 @@ describe 'Host edit room' do
       name: 'Quarto Duplo de Luxo', 
       description: 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.', 
       area: '18', 
-      max_people: '2', 
+      max_capacity: '2', 
       standard_price: '150'
     )
     room.create_service(

@@ -104,7 +104,7 @@ room = lodge.rooms.create!(
   name: 'Quarto Duplo de Luxo', 
   description: 'Com varanda, esta unidade oferece aquecimento, TV LCD de 32" e frigobar. E ainda dispõe de Wi-Fi grátis, cofre digital e aparelho de DVD, bem como banheiro privativo com secador de cabelo.', 
   area: '18', 
-  max_people: '2', 
+  max_capacity: '5', 
   standard_price: '150'
 )
 room.create_service(

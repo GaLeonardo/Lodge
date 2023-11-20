@@ -4,7 +4,7 @@ class Room < ApplicationRecord
   has_many :seasonal_prices
   has_many :reservations
 
-  validates :name, :description, :area, :max_people, :standard_price, presence: true
+  validates :name, :description, :area, :max_capacity, :standard_price, presence: true
   validates :name, uniqueness: true
 
   def calculate_rent_price(start_date, end_date)
