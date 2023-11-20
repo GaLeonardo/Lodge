@@ -14,6 +14,13 @@ class Room < ApplicationRecord
     calculate_period_price(seasonals)
   end
 
+  def check_availability(start_date, end_date)
+    reservations.where(status: [:confirmed, :active]).any? do |reservation|
+      reservation_range = reservation.start_date..reservation.end_date
+      reservation_range.overlaps?(start_date..end_date)
+    end
+  end
+
   private
 
   def calculate_regular_days(start_date, end_date, seasonals)

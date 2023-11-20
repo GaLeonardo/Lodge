@@ -9,6 +9,7 @@ pt-BR:
         total_price: Valor total das diárias
         number_guests: Número de hóspedes
         status: Status da reserva
+        room: Quarto
       reservation/status:
         pending: Pendente
         confirmed: Confirmado
