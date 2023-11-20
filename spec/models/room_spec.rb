@@ -27,12 +27,12 @@ RSpec.describe Room, type: :model do
         expect(room.errors.include? :area).to be true
       end
 
-      it 'max_people is mandatory' do
+      it 'max_capacity is mandatory' do
         room = Room.new
 
         room.valid?
 
-        expect(room.errors.include? :max_people).to be true
+        expect(room.errors.include? :max_capacity).to be true
       end
 
       it 'standard_price is mandatory' do

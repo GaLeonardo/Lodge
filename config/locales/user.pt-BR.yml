@@ -4,7 +4,9 @@ pt-BR:
       user: 'Usuário'
     attributes:
       user:
-        name: 'Nome'
+        first_name: 'Nome'
+        last_name: 'Último nome'
+        personal_id: 'CPF'
         role: 'Tipo de Usuário'
         roles:
           host: 'Anfitrião'

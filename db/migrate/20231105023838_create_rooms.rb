@@ -4,7 +4,7 @@ class CreateRooms < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :description
       t.integer :area
-      t.integer :max_people
+      t.integer :max_capacity
       t.integer :standard_price
       t.references :lodge, null: false, foreign_key: true
 

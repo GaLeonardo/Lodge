@@ -7,6 +7,8 @@ describe 'User create account' do
     click_on 'Iniciar sessão'
     click_on 'Criar uma conta'
     fill_in 'Nome', with: 'José'
+    fill_in 'Último nome', with: 'Almeida'
+    fill_in 'CPF', with: '66444882414'
     fill_in 'E-mail', with: 'jose@gmail.com'
     fill_in 'Senha', with: 'strongpassword'
     fill_in 'Confirme sua senha', with: 'strongpassword'
@@ -20,7 +22,7 @@ describe 'User create account' do
     expect(page).to have_button 'Sair'
 
     user = User.last
-    expect(user.name).to eq 'José'
+    expect(user.first_name).to eq 'José'
     expect(user.role).to eq 'visitor'
   end
 
@@ -30,6 +32,8 @@ describe 'User create account' do
     click_on 'Iniciar sessão'
     click_on 'Criar uma conta'
     fill_in 'Nome', with: 'José'
+    fill_in 'Último nome', with: 'Almeida'
+    fill_in 'CPF', with: '66444882414'
     fill_in 'E-mail', with: 'jose@gmail.com'
     fill_in 'Senha', with: 'strongpassword'
     fill_in 'Confirme sua senha', with: 'strongpassword'
@@ -45,7 +49,7 @@ describe 'User create account' do
     expect(page).to have_current_path new_lodge_path
 
     user = User.last
-    expect(user.name).to eq 'José'
+    expect(user.first_name).to eq 'José'
     expect(user.role).to eq 'host'
   end
 end

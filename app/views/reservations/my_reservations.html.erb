@@ -1,0 +1,38 @@
+<h2>Minhas Reservas</h2>
+
+<% if @reservations %>
+  <% @reservations.each do |reservation| %>
+    <% unless reservation.active? || reservation.canceled? || reservation.finished? %>
+      <%= button_to "Cancelar reserva", cancel_reservation_path(reservation), method: :post %>
+    <% end%>
+
+    <dl>
+      <dt>Reserva:</dt>
+      <dd><%= reservation.id %></dd>
+
+      <dt>Código da reserva:</dt>
+      <dd><%= link_to reservation.code, reservation %></dd>
+
+      <dt>Pousada:</dt>
+      <dd><%= reservation.room.lodge.brand_name %></dd>
+
+      <dt>Quarto:</dt>
+      <dd><%= reservation.room.name %></dd>
+
+      <dt>Check-in:</dd>
+      <dd><%= I18n.l reservation.start_date %></dd>
+
+      <dt>Check-out:</dt>
+      <dd><%= I18n.l reservation.end_date %></dd>
+
+      <dt>Número de hóspedes:</dt>
+      <dd><%= reservation.number_guests %></dd>
+
+      <dt>Valor total das diárias:</dt>
+      <dd>R$ <%= reservation.total_price %>,00</dd>
+
+      <dt>Status da reserva:</dt>
+      <dd><%= Reservation.human_attribute_name("status.#{reservation.status}") %></dd>
+    </dl>
+  <% end %>
+<% end %>

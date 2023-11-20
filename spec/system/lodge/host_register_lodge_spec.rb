@@ -8,7 +8,7 @@ describe 'Host create lodge' do
   end
 
   it 'if is host' do
-    user = User.create!(name: 'João', email: 'joao@gmail.com', password: 'password', role: :visitor)
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'visitor')
 
     login_as user
     visit new_lodge_path
@@ -18,7 +18,7 @@ describe 'Host create lodge' do
   end
 
   it 'cannot visit homepage until register a lodge' do
-    user = User.create!(name: 'João', email: 'joao@gmail.com', password: 'password', role: :host)
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
 
     login_as user
     visit root_path
@@ -27,7 +27,7 @@ describe 'Host create lodge' do
   end
 
   it 'miss all datas and see errors' do
-    user = User.create!(name: 'João', email: 'joao@gmail.com', password: 'password', role: :host)
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
 
     login_as user
     visit new_lodge_path

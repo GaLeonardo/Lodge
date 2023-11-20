@@ -7,7 +7,7 @@ pt-BR:
         name: 'Nome do quarto'
         description: 'Descrição do quarto'
         area: 'Área'
-        max_people: 'Quantidade de pessoas permitida'
+        max_capacity: 'Quantidade de pessoas permitida'
         standard_price: 'Valor diário padrão'
         has_bathroom: 'Banheiro'
         has_balcony: 'Varanda'

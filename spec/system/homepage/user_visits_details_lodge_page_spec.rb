@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User visit details lodge' do
   it 'and see lodge details' do
     user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
+      first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host'
     )
 
     user.create_lodge!(

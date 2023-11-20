@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User autenticates' do
   it 'successfully as host' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
 
     visit root_path
     click_on 'Iniciar sessão'
@@ -18,7 +18,13 @@ describe 'User autenticates' do
   end
   
   it 'successfully as user' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'visitor')
+    user = User.create!(
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
+      email: 'jose@email.com', 
+      password: 'strongpassword', 
+    )
 
     visit root_path
     click_on 'Iniciar sessão'

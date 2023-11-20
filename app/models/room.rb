@@ -4,7 +4,7 @@ class Room < ApplicationRecord
   has_many :seasonal_prices
   has_many :reservations
 
-  validates :name, :description, :area, :max_people, :standard_price, presence: true
+  validates :name, :description, :area, :max_capacity, :standard_price, presence: true
   validates :name, uniqueness: true
 
   def calculate_rent_price(start_date, end_date)
@@ -12,6 +12,13 @@ class Room < ApplicationRecord
     regulars = calculate_regular_days(start_date, end_date, seasonals)
     seasonals[self.standard_price] = regulars
     calculate_period_price(seasonals)
+  end
+
+  def check_availability(start_date, end_date)
+    reservations.where(status: [:confirmed, :active]).any? do |reservation|
+      reservation_range = reservation.start_date..reservation.end_date
+      reservation_range.overlaps?(start_date..end_date)
+    end
   end
 
   private
@@ -29,7 +36,6 @@ class Room < ApplicationRecord
         seasonals[seasonal.price] += 1 if season_range.cover?(date)
       end
     end
-  
     seasonals
   end
 

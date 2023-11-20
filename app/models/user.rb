@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum role: {visitor: 0, host: 1} 
 
   has_one :lodge
+  has_many :reservations
 
-  validates :name, :role, presence: true
+  validates :first_name, :last_name, :personal_id, :role, presence: true
 end

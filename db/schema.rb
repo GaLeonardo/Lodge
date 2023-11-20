@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_18_132452) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_175422) do
   create_table "lodges", force: :cascade do |t|
     t.string "corporate_name"
     t.string "brand_name"
@@ -49,12 +49,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_132452) do
     t.date "start_date"
     t.date "end_date"
     t.integer "total_price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "number_guests"
     t.integer "user_id"
     t.integer "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
     t.index ["room_id"], name: "index_reservations_on_room_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -63,7 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_132452) do
     t.string "name"
     t.string "description"
     t.integer "area"
-    t.integer "max_people"
+    t.integer "max_capacity"
     t.integer "standard_price"
     t.integer "lodge_id", null: false
     t.datetime "created_at", null: false
@@ -102,10 +103,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_132452) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
+    t.string "first_name"
+    t.string "last_name"
+    t.string "personal_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
