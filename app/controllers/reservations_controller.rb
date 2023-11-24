@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!, only: [:confirm, :show, :my_reservations, :cancel]
-  before_action :get_lodge_and_room, except: [:confirmate, :confirm, :show, :my_reservations, :cancel]
-  before_action :get_reservation, only: [:confirmate, :confirm, :cancel]
+  before_action :get_lodge_and_room, except: [:confirmate, :confirm, :show, :my_reservations, :cancel, :check_in]
+  before_action :get_reservation, only: [:confirmate, :confirm, :cancel, :check_in]
 
   def new
     @reservation = @room.reservations.build
@@ -46,6 +46,15 @@ class ReservationsController < ApplicationController
     end
     
     redirect_to my_reservations_path, notice: 'Não é possível cancelar reservar com menos de 7 dias para o check-in.'
+  end
+
+  def check_in
+    if @reservation.start_date <= Date.today
+      @reservation.check_in
+      return redirect_to lodge_reservations_path, notice: 'Check-in realizado com sucesso.'
+    end  
+    
+    return redirect_to lodge_reservations_path, notice: 'Não foi possível realizar o check-in.'
   end
 
   private

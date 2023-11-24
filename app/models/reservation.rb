@@ -2,6 +2,8 @@ class Reservation < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :room
 
+  has_one :check_in
+
   before_validation :get_total_price, on: :create
   before_validation :generate_code, on: :create
 
@@ -13,6 +15,13 @@ class Reservation < ApplicationRecord
   def cancel_unless_less_than_seven_days
     self.start_date >= 7.days.from_now.to_date
   end
+
+  def check_in
+    self.build_check_in.save
+    self.active!
+  end
+
+  private
 
   def get_total_price
     self.total_price = self.room.calculate_rent_price(self.start_date, self.end_date)

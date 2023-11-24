@@ -20,6 +20,7 @@
           <%= current_user.role %> |
           <% if current_user.host? && !current_user.lodge.nil? && current_user.lodge.id %>
             <%= link_to 'Minha pousada', current_user.lodge %> |
+            <%= link_to 'Reservas', lodge_reservations_path %> |
             <%= link_to 'Cadastrar quarto', new_lodge_room_path(current_user.lodge) %>
           <% end %>
           <% if current_user.visitor? %>

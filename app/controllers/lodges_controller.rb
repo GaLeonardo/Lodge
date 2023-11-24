@@ -61,6 +61,11 @@ class LodgesController < ApplicationController
     @lodges = Lodge.ativo.search(@param)
   end
 
+  def lodge_reservations
+    @lodge = current_user.lodge
+    @reservations = @lodge.reservations
+  end
+
   private
 
   def user_is_host

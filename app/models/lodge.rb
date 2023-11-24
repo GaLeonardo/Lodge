@@ -5,6 +5,7 @@ class Lodge < ApplicationRecord
   validates :registration_number, uniqueness: true
 
   has_many :rooms
+  has_many :reservations, through: :rooms
   
   has_one :payment_method
   

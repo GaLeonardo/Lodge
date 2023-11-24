@@ -1,29 +1,37 @@
 <h2>Minhas Reservas</h2>
 
 <% if @reservation %>
-  <dl>
-    <dt>Pousada:</dt>
-    <dd><%= @lodge.brand_name %></dd>
+  <h3>Reserva: <%= link_to @reservation.code, @reservation %></h3>
+    <dl>
+      <dt>Pousada:</dt>
+      <dd><%= @reservation.room.lodge.brand_name %></dd>
 
-    <dt>Quarto:</dt>
-    <dd><%= @room.name %></dd>
+      <dt>Quarto:</dt>
+      <dd><%= @reservation.room.name %></dd>
 
-    <dt>Check-in:</dd>
-    <dd><%= I18n.l @reservation.start_date %></dd>
+      <dt>Check-in:</dd>
+      <dd><%= I18n.l @reservation.start_date %></dd>
 
-    <dt>Check-out:</dt>
-    <dd><%= I18n.l @reservation.end_date %></dd>
+      <dt>Check-out:</dt>
+      <dd><%= I18n.l @reservation.end_date %></dd>
 
-    <dt>Número de hóspedes:</dt>
-    <dd><%= @reservation.number_guests %></dd>
+      <dt>Número de hóspedes:</dt>
+      <dd><%= @reservation.number_guests %></dd>
 
-    <dt>Valor total das diárias:</dt>
-    <dd>R$ <%= @reservation.total_price %>,00</dd>
+      <dt>Valor total das diárias:</dt>
+      <dd>R$ <%= @reservation.total_price %>,00</dd>
 
-    <dt>Código da reserva:</dt>
-    <dd><%= @reservation.code %></dd>
+      <dt>Código da reserva:</dt>
+      <dd><%= @reservation.code %></dd>
 
-    <dt>Status da reserva:</dt>
-    <dd><%= Reservation.human_attribute_name("status.#{@reservation.status}") %></dd>
-  </dl>
+      <dt>Status da reserva:</dt>
+      <dd><%= Reservation.human_attribute_name("status.#{@reservation.status}") %></dd>
+    </dl>
+
+    <% if current_user.visitor? %>
+    <% elsif current_user.host? %>
+      <% if @reservation.confirmed? %>
+        <%= button_to "Registrar Check-in", check_in_reservation_path(@reservation), data: { turbo_confirm: 'Deseja realizar check-in?' }, method: :post%>
+      <% end %>
+    <% end %>
 <% end %>

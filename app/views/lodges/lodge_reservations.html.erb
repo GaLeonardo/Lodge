@@ -1,0 +1,26 @@
+<h2>Reservas <%= @lodge.brand_name %></h2>
+
+<% if @reservations %>
+  <% @reservations.each do |r| %>
+    <h3>Reserva: <%= link_to r.code, r %></h3>
+    <dl>
+      <dt>Quarto:</dt>
+      <dd><%= r.room.name %></dd>
+
+      <dt>Check-in:</dd>
+      <dd><%= I18n.l r.start_date %></dd>
+
+      <dt>Check-out:</dt>
+      <dd><%= I18n.l r.end_date %></dd>
+
+      <dt>Número de hóspedes:</dt>
+      <dd><%= r.number_guests %></dd>
+
+      <dt>Valor total das diárias:</dt>
+      <dd>R$ <%= r.total_price %>,00</dd>
+
+      <dt>Status da reserva:</dt>
+      <dd><%= Reservation.human_attribute_name("status.#{r.status}") %></dd>
+    </dl>
+  <% end %>
+<% end %>
