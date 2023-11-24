@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'my_reservations', to: 'reservations#my_reservations'
   get 'lodge_reservations', to: 'lodges#lodge_reservations'
+  get 'lodge_actives', to: 'lodges#lodge_actives'
 
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
     get 'city_list', on: :collection

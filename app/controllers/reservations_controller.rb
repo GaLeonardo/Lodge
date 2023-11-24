@@ -40,18 +40,24 @@ class ReservationsController < ApplicationController
   end
 
   def cancel
-    if @reservation.cancel_unless_less_than_seven_days
-      @reservation.canceled!
-      return redirect_to my_reservations_path, notice: 'Reserva cancelada com sucesso.'
-    end
-    
-    redirect_to my_reservations_path, notice: 'Não é possível cancelar reservar com menos de 7 dias para o check-in.'
+    if current_user.host?
+      if @reservation.cancel
+        return redirect_to @reservation, notice: 'Reserva cancelada.'
+      end
+      return redirect_to @reservation, notice: 'Não foi possível cancelar a reserva.'
+    else
+      if @reservation.cancel_unless_less_than_seven_days
+        @reservation.canceled!
+        return redirect_to my_reservations_path, notice: 'Reserva cancelada com sucesso.'
+      end
+      return redirect_to my_reservations_path, notice: 'Não é possível cancelar reservar com menos de 7 dias para o check-in.'
+    end    
   end
 
   def check_in
     if @reservation.start_date <= Date.today
       @reservation.check_in
-      return redirect_to lodge_reservations_path, notice: 'Check-in realizado com sucesso.'
+      return redirect_to lodge_actives_path, notice: 'Check-in realizado com sucesso.'
     end  
     
     return redirect_to lodge_reservations_path, notice: 'Não foi possível realizar o check-in.'

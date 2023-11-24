@@ -21,6 +21,12 @@ class Reservation < ApplicationRecord
     self.active!
   end
 
+  def cancel
+    if self.start_date <= 2.days.ago.to_date
+      self.canceled!
+    end
+  end
+
   private
 
   def get_total_price

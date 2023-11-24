@@ -63,7 +63,12 @@ class LodgesController < ApplicationController
 
   def lodge_reservations
     @lodge = current_user.lodge
-    @reservations = @lodge.reservations
+    @reservations = @lodge.reservations.confirmed
+  end
+
+  def lodge_actives
+    @lodge = current_user.lodge
+    @reservations = @lodge.reservations.active
   end
 
   private

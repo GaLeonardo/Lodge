@@ -30,8 +30,11 @@
 
     <% if current_user.visitor? %>
     <% elsif current_user.host? %>
-      <% if @reservation.confirmed? %>
+      <% if @reservation.start_date >= Date.today && @reservation.confirmed? %>
         <%= button_to "Registrar Check-in", check_in_reservation_path(@reservation), data: { turbo_confirm: 'Deseja realizar check-in?' }, method: :post%>
+      <% end %>
+      <% if Date.today >= @reservation.start_date + 2.days && @reservation.active? %>
+        <%= button_to "Cancelar Reserva", cancel_reservation_path(@reservation), data: { turbo_confirm: 'Deseja realizar check-in?' }, method: :post%>
       <% end %>
     <% end %>
 <% end %>
