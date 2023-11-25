@@ -8,11 +8,42 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
-second_user = User.create!(name: 'João', email: 'joao@email.com', password: 'morestrongerpassword', role: 'host')
-third_user = User.create!(name: 'Clauber', email: 'clauber@email.com', password: 'morestrongerpassword', role: 'host')
-fourth_user = User.create!(name: 'Ricardo', email: 'ricardo@email.com', password: 'twowaymorestrongerpassword', role: 'host')
-fifth_user = User.create!(name: 'Renan', email: 'renan@email.com', password: 'evenmorethanricardopassword', role: 'host')
+user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
+second_user = User.create!(
+  first_name: 'João',
+  last_name: 'Silva',
+  personal_id: '12345678901',
+  email: 'joao@email.com',
+  password: 'morestrongerpassword',
+  role: 'host'
+)
+
+third_user = User.create!(
+  first_name: 'Clauber',
+  last_name: 'Oliveira',
+  personal_id: '98765432109',
+  email: 'clauber@email.com',
+  password: 'morestrongerpassword',
+  role: 'host'
+)
+
+fourth_user = User.create!(
+  first_name: 'Ricardo',
+  last_name: 'Santos',
+  personal_id: '56789012345',
+  email: 'ricardo@email.com',
+  password: 'twowaymorestrongerpassword',
+  role: 'host'
+)
+
+fifth_user = User.create!(
+  first_name: 'Renan',
+  last_name: 'Pereira',
+  personal_id: '98701234567',
+  email: 'renan@email.com',
+  password: 'evenmorethanricardopassword',
+  role: 'host'
+)
 
 lodge = user.create_lodge!(
   corporate_name: 'Pousada Sol Nascente LTDA', 

@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe 'Host edit lodge' do
   it 'and displays errors for invalid input' do
-    user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
-    )
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
     lodge = user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
       brand_name: 'Pousada Sol Nascente', 
@@ -35,9 +33,7 @@ describe 'Host edit lodge' do
   end
 
   it 'from homepage and see all options' do 
-    user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
-    )
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
     user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
       brand_name: 'Pousada Sol Nascente', 
@@ -76,13 +72,13 @@ describe 'Host edit lodge' do
   end
 
   it 'and prevents unauthorized access to edit page' do
-    user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
-    )
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
     second_user = User.create!(
-      name: 'João', 
-      email: 'joao@email.com', 
-      password: 'morestrongerpassword', 
+      first_name: 'João',
+      last_name: 'Silva',
+      personal_id: '12345678901',
+      email: 'joao@email.com',
+      password: 'morestrongerpassword',
       role: 'host'
     )
 
@@ -130,9 +126,7 @@ describe 'Host edit lodge' do
   end
 
   it 'successfully' do 
-    user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
-    )
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
     user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
       brand_name: 'Pousada Sol Nascente', 

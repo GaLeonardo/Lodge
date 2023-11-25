@@ -16,11 +16,16 @@
         <%= link_to 'Pousadas', root_path %> |
         <% if user_signed_in? %>
           <%= current_user.email %> |
-          <%= current_user.name %> |
+          <%= current_user.first_name %> |
           <%= current_user.role %> |
           <% if current_user.host? && !current_user.lodge.nil? && current_user.lodge.id %>
             <%= link_to 'Minha pousada', current_user.lodge %> |
+            <%= link_to 'Reservas', lodge_reservations_path %> |
+            <%= link_to 'Estadias ativas', lodge_actives_path %> |
             <%= link_to 'Cadastrar quarto', new_lodge_room_path(current_user.lodge) %>
+          <% end %>
+          <% if current_user.visitor? %>
+            <%= link_to 'Minhas reservas', my_reservations_path %> |
           <% end %>
           <p></p>
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>

@@ -15,7 +15,7 @@ describe 'User visits homepage' do
   end
 
   it 'and see a lodge' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
     lodge = user.create_lodge!(corporate_name: 'Pousada Sol Nascente LTDA', brand_name: 'Pousada Sol Nascente', registration_number: '01514184897000136', full_address: 'Rua das Águas, 10', city: 'São Paulo', state: 'SP', email: 'pousadasolnascente@contato.com', zip_code: '01100036', contact_number: '14998548758', description: 'Uma pousada com maravilhas do campo e vistas inimagináveis', pets: 1, terms_of_service: 'Proíbido som alto', check_in: '11:30', check_out: '12:00', status: 1)
     
     visit root_path
@@ -29,8 +29,15 @@ describe 'User visits homepage' do
   end
 
   it 'and sees recents lodges' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
-    second_user = User.create!(name: 'João', email: 'joao@email.com', password: 'morestrongerpassword', role: 'host')
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
+    second_user = User.create!(
+      first_name: 'João',
+      last_name: 'Silva',
+      personal_id: '12345678901',
+      email: 'joao@email.com',
+      password: 'morestrongerpassword',
+      role: 'host'
+    )
 
     user.create_lodge!(corporate_name: 'Pousada Sol Nascente LTDA', brand_name: 'Pousada Sol Nascente', registration_number: '01514184897000136', full_address: 'Rua das Águas, 10', city: 'São Paulo', state: 'SP', email: 'pousadasolnascente@contato.com', zip_code: '01100036', contact_number: '14998548758', description: 'Uma pousada com maravilhas do campo e vistas inimagináveis.', pets: 1, terms_of_service: 'Proíbido som alto', check_in: '11:30', check_out: '12:00', status: 1)    
     second_user.create_lodge!(corporate_name: 'Pousada Recanto Almeida LTDA', brand_name: 'Pousada Recanto Almeida', registration_number: '02549631818281834', full_address: 'Rua das Marmitas, 20', city: 'Campos do Jordão', state: 'SP', email: 'pousadasolnascente@contato.com', zip_code: '01100036', contact_number: '14998548758', description: 'Na Serra da Mantiqueira, a Pousada Recanto Almeida está localizada em Campos do Jordão. Oferece estacionamento gratuito e café da manhã. O café da manhã é servido diariamente com opções de panificados, sucos cereais e frutas. Nas proximidades da pousada, é possível encontrar restaurantes, padarias e bares.', pets: 1, terms_of_service: 'Liberado o som alto', check_in: '11:30', check_out: '12:00', status: 1)
@@ -51,11 +58,42 @@ describe 'User visits homepage' do
   end
 
   it 'and sees the older logdes' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
-    second_user = User.create!(name: 'João', email: 'joao@email.com', password: 'morestrongerpassword', role: 'host')
-    third_user = User.create!(name: 'Clauber', email: 'clauber@email.com', password: 'morestrongerpassword', role: 'host')
-    fourth_user = User.create!(name: 'Ricardo', email: 'ricardo@email.com', password: 'twowaymorestrongerpassword', role: 'host')
-    fifth_user = User.create!(name: 'Renan', email: 'renan@email.com', password: 'evenmorethanricardopassword', role: 'host')
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
+    second_user = User.create!(
+      first_name: 'João',
+      last_name: 'Silva',
+      personal_id: '12345678901',
+      email: 'joao@email.com',
+      password: 'morestrongerpassword',
+      role: 'host'
+    )
+
+    third_user = User.create!(
+      first_name: 'Clauber',
+      last_name: 'Oliveira',
+      personal_id: '98765432109',
+      email: 'clauber@email.com',
+      password: 'morestrongerpassword',
+      role: 'host'
+    )
+
+    fourth_user = User.create!(
+      first_name: 'Ricardo',
+      last_name: 'Santos',
+      personal_id: '56789012345',
+      email: 'ricardo@email.com',
+      password: 'twowaymorestrongerpassword',
+      role: 'host'
+    )
+
+    fifth_user = User.create!(
+      first_name: 'Renan',
+      last_name: 'Pereira',
+      personal_id: '98701234567',
+      email: 'renan@email.com',
+      password: 'evenmorethanricardopassword',
+      role: 'host'
+    )
 
     user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 

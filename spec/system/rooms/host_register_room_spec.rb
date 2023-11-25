@@ -3,7 +3,12 @@ require 'rails_helper'
 describe 'Host create lodge room' do
   it 'if is authenticated' do
     user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
+      email: 'jose@email.com', 
+      password: 'strongpassword', 
+      role: 'host'
     )
     lodge = user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
@@ -30,7 +35,12 @@ describe 'Host create lodge room' do
   
   it 'from the homepage' do
     user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
+      email: 'jose@email.com', 
+      password: 'strongpassword', 
+      role: 'host'
     )
     lodge = user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
@@ -70,7 +80,12 @@ describe 'Host create lodge room' do
 
   it 'displays errors for invalid inputs' do
     user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
+      email: 'jose@email.com', 
+      password: 'strongpassword', 
+      role: 'host'
     )
     lodge = user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
@@ -104,7 +119,12 @@ describe 'Host create lodge room' do
 
   it 'prevents creation of room with duplicate name' do
     user = User.create!(
-      name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host'
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
+      email: 'jose@email.com', 
+      password: 'strongpassword', 
+      role: 'host'
     )
     lodge = user.create_lodge!(
       corporate_name: 'Pousada Sol Nascente LTDA', 
@@ -141,7 +161,7 @@ describe 'Host create lodge room' do
   end
 
   it 'sucessfully' do
-    user = User.create!(name: 'José', email: 'jose@email.com', password: 'strongpassword', role: 'host')
+    user = User.create!(first_name: 'José', last_name: 'Almeida', personal_id: '66444882414', email: 'jose@email.com', password: 'strongpassword', role: 'host')
     lodge = user.create_lodge!(corporate_name: 'Pousada Sol Nascente LTDA', brand_name: 'Pousada Sol Nascente', registration_number: '01514184897000136', full_address: 'Rua das Águas, 10', city: 'São Paulo', state: 'SP', email: 'pousadasolnascente@contato.com', zip_code: '01100036', contact_number: '14998548758', description: 'Uma pousada com maravilhas do campo e vistas inimagináveis', pets: 1, terms_of_service: 'Proíbido som alto', check_in: '11:30', check_out: '12:00', status: 1)
 
     login_as user

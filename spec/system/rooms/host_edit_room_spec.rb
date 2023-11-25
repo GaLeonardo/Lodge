@@ -3,7 +3,9 @@ require 'rails_helper'
 describe 'Host edit room' do
   it 'if is authenticated' do
     user = User.create!(
-      name: 'José', 
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
       email: 'jose@email.com', 
       password: 'strongpassword', 
       role: 'host'
@@ -49,7 +51,9 @@ describe 'Host edit room' do
 
   it 'from the homepage' do
     user = User.create!(
-      name: 'José', 
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
       email: 'jose@email.com', 
       password: 'strongpassword', 
       role: 'host'
@@ -110,7 +114,9 @@ describe 'Host edit room' do
 
   it 'displays errors for invalid inputs' do
     user = User.create!(
-      name: 'José', 
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
       email: 'jose@email.com', 
       password: 'strongpassword', 
       role: 'host'
@@ -168,7 +174,9 @@ describe 'Host edit room' do
 
   it 'sucessfully' do
     user = User.create!(
-      name: 'José', 
+      first_name: 'José', 
+      last_name: 'Almeida',
+      personal_id: '66444882414',
       email: 'jose@email.com', 
       password: 'strongpassword', 
       role: 'host'

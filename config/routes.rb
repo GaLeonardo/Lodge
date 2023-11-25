@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
+  get 'my_reservations', to: 'reservations#my_reservations'
+  get 'lodge_reservations', to: 'lodges#lodge_reservations'
+  get 'lodge_actives', to: 'lodges#lodge_actives'
 
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
     get 'city_list', on: :collection
@@ -11,11 +14,10 @@ Rails.application.routes.draw do
       resources :reservations, shallow: true, only: [:new, :create, :show] do
         get 'confirmate', on: :member
         post 'confirm', on: :member
+        post 'cancel', on: :member
+        post 'check_in', on: :member
+
       end
     end
   end 
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
 end

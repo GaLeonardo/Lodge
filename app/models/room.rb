@@ -36,7 +36,6 @@ class Room < ApplicationRecord
         seasonals[seasonal.price] += 1 if season_range.cover?(date)
       end
     end
-  
     seasonals
   end
 
