@@ -22,6 +22,7 @@
             <%= link_to 'Minha pousada', current_user.lodge %> |
             <%= link_to 'Reservas', lodge_reservations_path %> |
             <%= link_to 'Estadias ativas', lodge_actives_path %> |
+            <%= link_to 'Avaliações', my_lodge_ratings_path %> |
             <%= link_to 'Cadastrar quarto', new_lodge_room_path(current_user.lodge) %>
           <% end %>
           <% if current_user.visitor? %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'my_reservations', to: 'reservations#my_reservations'
   get 'lodge_reservations', to: 'lodges#lodge_reservations'
   get 'lodge_actives', to: 'lodges#lodge_actives'
+  get 'my_lodge_ratings', to: 'lodges#my_ratings'
 
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
     get 'city_list', on: :collection
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
         post 'check_in', on: :member
         post 'check_out', on: :member
 
-        resources :reviews, shallow: true, only: [:new, :create]
+        resources :reviews, shallow: true, only: [:new, :create] do
+          resources :host_replies, shallow: true, only: [:new, :create]
+        end
       end
     end
   end 

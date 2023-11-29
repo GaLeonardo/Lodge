@@ -1,0 +1,10 @@
+<h2>Responder avaliação</h2>
+
+<%= form_with model: [@review, @host_reply] do |f| %>
+  <div>
+    <%= f.label :reply, 'Comentário' %>
+    <%= f.text_area :reply %>
+  </div>
+
+  <p><%= f.submit 'Criar Resposta' %></p>
+<% end %>

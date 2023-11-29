@@ -1,0 +1,24 @@
+<h2>Minhas Avaliações</h2>
+
+<% if @reviews.any? %>
+  <% @reviews.each do |r| %>
+    <h3>Reserva <%= r.reservation.code %></h3>
+
+    <dl>
+      <dt>Nota:</dt>
+      <dd><%= r.rating %></dd>
+
+      <dt>Comentário:</dt>
+      <dd><%= r.commentary %></dd>
+
+      <% if r.host_reply %>
+        <dt>Resposta:</dt>
+        <dd><%= r.host_reply.reply %></dd>
+      <% else %>
+        <p><%= button_to 'Responder comentário', new_review_host_reply_path(r), method: :get %></p>
+      <% end %>
+    </dl>
+  <% end %>
+<% else %>
+  <p>Não há avaliações no momento</p>
+<% end %>

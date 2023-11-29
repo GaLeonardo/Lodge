@@ -72,6 +72,11 @@ class LodgesController < ApplicationController
     @reservations = @lodge.reservations.active
   end
 
+  def my_ratings
+    @lodge = current_user.lodge
+    @reviews = @lodge.reviews
+  end
+
   private
 
   def user_is_host
