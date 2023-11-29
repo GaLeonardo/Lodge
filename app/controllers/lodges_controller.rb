@@ -1,7 +1,7 @@
 class LodgesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :city_list, :search]
-  before_action :require_hosts_lodge, except: [:new, :create]
-  before_action :user_is_host, except: [:show, :city_list, :search]
+  before_action :authenticate_user!, except: [:show, :city_list, :search, :reviews_list]
+  before_action :require_hosts_lodge, except: [:new, :create, :reviews_list]
+  before_action :user_is_host, except: [:show, :city_list, :search, :reviews_list]
 
   def index
     @lodge = Lodge.find_by(user_id: current_user.id)
@@ -30,7 +30,7 @@ class LodgesController < ApplicationController
   def show
     @lodge = Lodge.find(params[:id])
     @rooms = @lodge.rooms
-    @reviews = @lodge.reviews
+    @last_three_reviews = @lodge.reviews.last(3)
   end
 
   def edit
@@ -74,6 +74,11 @@ class LodgesController < ApplicationController
 
   def my_ratings
     @lodge = current_user.lodge
+    @reviews = @lodge.reviews
+  end
+  
+  def reviews_list
+    @lodge = Lodge.find(params[:id])
     @reviews = @lodge.reviews
   end
 

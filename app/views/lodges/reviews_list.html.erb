@@ -1,0 +1,16 @@
+<h2>Avaliações de <%= @lodge.brand_name %></h2>
+
+<% if @reviews.any? %>
+  <% @reviews.each do |r| %>
+    -----------------------------------------------------
+    <div>
+      Nota: <%= r.rating.to_f %>
+    </div>
+    
+    <div>
+      Comentário: <%= r.commentary %>
+    </div>
+  <% end %>
+<% else %>
+  <p>Não há comentários no momento.</p>
+<% end %>

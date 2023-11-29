@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :lodges, only: [:new, :create, :show, :edit, :update] do
     get 'city_list', on: :collection
     get 'search', on: :collection
+    get 'reviews_list', on: :member
     
     resources :rooms, only: [:new, :create, :edit, :update, :show] do
       resources :seasonal_prices, only: [:new, :create, :show, :edit, :update]

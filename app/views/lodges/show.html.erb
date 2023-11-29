@@ -1,5 +1,8 @@
 <h2><%= @lodge.brand_name %></h2>
 
+<div id='reviews'>
+  <%= link_to 'Avaliações', reviews_list_lodge_path %>
+</div>
 <% if current_user && current_user.lodge == @lodge %>
   <%= link_to 'Editar', edit_lodge_path %>
 <% end %>
@@ -100,11 +103,11 @@
 
 <h3>Comentários</h3>
 
-<% if @reviews.any? %>
-  <% @reviews.each do |r| %>
+<% if @last_three_reviews.any? %>
+  <% @last_three_reviews.each do |r| %>
     -----------------------------------------------------
     <div>
-      Nota: <%= r.rating %>
+      Nota: <%= r.rating.to_f %>
     </div>
     
     <div>
