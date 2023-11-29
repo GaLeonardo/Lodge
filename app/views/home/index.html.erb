@@ -19,6 +19,7 @@
   <% @recent_lodges.each do |rl| %>
     <div>
       <h3><%= link_to rl.brand_name, rl %></h3>
+      <p>Nota: <%= rl.average_ratings %></p>
       <p><%= rl.description %></p>
     </div>
 
@@ -37,6 +38,7 @@
     -------------------------------------------------
     <div>
       <h3><%= link_to lh.brand_name, lh %></h3>
+      <p>Nota: <%= lh.average_ratings %></p>
       <p><%= lh.description %></p>
     </div>
 
