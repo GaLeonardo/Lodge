@@ -6,6 +6,7 @@ class Lodge < ApplicationRecord
 
   has_many :rooms
   has_many :reservations, through: :rooms
+  has_many :reviews, through: :reservations
   
   has_one :payment_method
   

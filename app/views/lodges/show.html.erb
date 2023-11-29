@@ -97,3 +97,20 @@
     Não existem quartos cadastrados nessa pousada.
   </div>
 <% end %>
+
+<h3>Comentários</h3>
+
+<% if @reviews.any? %>
+  <% @reviews.each do |r| %>
+    -----------------------------------------------------
+    <div>
+      Nota: <%= r.rating %>
+    </div>
+    
+    <div>
+      Comentário: <%= r.commentary %>
+    </div>
+  <% end %>
+<% else %>
+  <p>Não há comentários no momento.</p>
+<% end %>

@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!, only: [:confirm, :show, :my_reservations, :cancel]
-  before_action :get_lodge_and_room, except: [:confirmate, :confirm, :show, :my_reservations, :cancel, :check_in]
-  before_action :get_reservation, only: [:confirmate, :confirm, :cancel, :check_in]
+  before_action :authenticate_user!, only: [:confirm, :show, :my_reservations, :cancel, :check_in, :check_out]
+  before_action :get_lodge_and_room, except: [:confirmate, :confirm, :show, :my_reservations, :cancel, :check_in, :check_out]
+  before_action :get_reservation, only: [:confirmate, :confirm, :cancel, :check_in, :check_out]
 
   def new
     @reservation = @room.reservations.build
@@ -30,6 +30,8 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    @check_in = @reservation.check_in
+    @check_out = @reservation.check_out
     @room = @reservation.room
     @lodge = @room.lodge
   end
@@ -56,11 +58,20 @@ class ReservationsController < ApplicationController
 
   def check_in
     if @reservation.start_date <= Date.today
-      @reservation.check_in
+      @reservation.check_in_reservation
       return redirect_to lodge_actives_path, notice: 'Check-in realizado com sucesso.'
     end  
     
     return redirect_to lodge_reservations_path, notice: 'Não foi possível realizar o check-in.'
+  end
+
+  def check_out
+    if @reservation.active?
+      @reservation.check_out_reservation(params[:payment_method], @reservation)
+      return redirect_to @reservation, notice: 'Check-out realizado com sucesso.'
+    end  
+    
+    return redirect_to lodge_actives_path, notice: 'Não foi possível realizar o check-out.'
   end
 
   private

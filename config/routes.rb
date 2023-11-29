@@ -16,7 +16,9 @@ Rails.application.routes.draw do
         post 'confirm', on: :member
         post 'cancel', on: :member
         post 'check_in', on: :member
+        post 'check_out', on: :member
 
+        resources :reviews, shallow: true, only: [:new, :create]
       end
     end
   end 

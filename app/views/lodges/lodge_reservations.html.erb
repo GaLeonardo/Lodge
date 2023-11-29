@@ -1,6 +1,6 @@
 <h2>Reservas <%= @lodge.brand_name %></h2>
 
-<% if @reservations %>
+<% if @reservations.any? %>
   <% @reservations.each do |r| %>
     <h3>Reserva: <%= link_to r.code, r %></h3>
     <dl>

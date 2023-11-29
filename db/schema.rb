@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_23_235647) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_213934) do
   create_table "check_ins", force: :cascade do |t|
     t.integer "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reservation_id"], name: "index_check_ins_on_reservation_id"
+  end
+
+  create_table "check_outs", force: :cascade do |t|
+    t.integer "reservation_id", null: false
+    t.string "payment_method"
+    t.integer "total_paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_check_outs_on_reservation_id"
   end
 
   create_table "lodges", force: :cascade do |t|
@@ -65,6 +74,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_23_235647) do
     t.string "code"
     t.index ["room_id"], name: "index_reservations_on_room_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "commentary"
+    t.integer "reservation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -121,10 +139,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_23_235647) do
   end
 
   add_foreign_key "check_ins", "reservations"
+  add_foreign_key "check_outs", "reservations"
   add_foreign_key "lodges", "users"
   add_foreign_key "payment_methods", "lodges"
   add_foreign_key "reservations", "rooms"
   add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "reservations"
   add_foreign_key "rooms", "lodges"
   add_foreign_key "seasonal_prices", "rooms"
   add_foreign_key "services", "rooms"

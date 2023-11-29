@@ -30,6 +30,7 @@ class LodgesController < ApplicationController
   def show
     @lodge = Lodge.find(params[:id])
     @rooms = @lodge.rooms
+    @reviews = @lodge.reviews
   end
 
   def edit

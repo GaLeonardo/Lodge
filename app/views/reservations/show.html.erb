@@ -28,13 +28,42 @@
       <dd><%= Reservation.human_attribute_name("status.#{@reservation.status}") %></dd>
     </dl>
 
+    <% if @reservation.finished? %>
+        <h2>Dados do Check-out</h2>
+        <dl>
+          <dt>Valor pago:</dt>
+          <dd>R$ <%= @check_out.total_paid %>,00</dd>
+
+          <dt>Período de estadia:</dt>
+          <dd><%= I18n.l @check_in.created_at.to_date %> à <%= I18n.l @check_out.created_at.to_date %></dd>
+
+          <dt>Método de pagamento</dt>
+          <dd><%= @check_out.payment_method %></dd>
+        </dl>
+      <% end %>
+
     <% if current_user.visitor? %>
+      <% if @reservation.finished? %>
+        <%= button_to "Escrever comentário", new_reservation_review_path(@reservation), method: :get %>
+      <% end %>
     <% elsif current_user.host? %>
       <% if @reservation.start_date >= Date.today && @reservation.confirmed? %>
         <%= button_to "Registrar Check-in", check_in_reservation_path(@reservation), data: { turbo_confirm: 'Deseja realizar check-in?' }, method: :post%>
       <% end %>
-      <% if Date.today >= @reservation.start_date + 2.days && @reservation.active? %>
-        <%= button_to "Cancelar Reserva", cancel_reservation_path(@reservation), data: { turbo_confirm: 'Deseja realizar check-in?' }, method: :post%>
+      <% if Date.today >= @reservation.start_date + 2.days && @reservation.confirmed? %>
+        <%= button_to "Cancelar Reserva", cancel_reservation_path(@reservation), data: { turbo_confirm: 'Deseja cancelar a reserva??' }, method: :post%>
+      <% end %>
+      <% if @reservation.active? %>
+        <h2>Check-out</h2>
+        <%= form_with url: check_out_reservation_path(@reservation) do |f| %>
+          <%= f.label :payment_method, 'Forma de pagamento' %>
+          <%= f.select :payment_method, [['Cartão de Crédito', 'credit_card'],
+                                        ['PIX', 'bank_transfer'], 
+                                        ['Cartão de Débito', 'debit_card'],
+                                        ['Dinheiro', 'cash'],
+                                        ['Depósito bancário', 'deposit']] %>
+          <p><%= f.submit 'Registrar Check-out' %></p>
+        <% end %>
       <% end %>
     <% end %>
 <% end %>

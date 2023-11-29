@@ -1,0 +1,15 @@
+<h2>Escreva um comentário</h2>
+
+<%= form_with model: [@reservation, @review] do |f| %>
+  <div>
+    <%= f.label :commentary, 'Comentário' %>
+    <%= f.text_area :commentary %>
+  </div>
+  
+  <div>
+    <%= f.label :rating, 'Nota' %>
+    <%= f.select :rating, options_for_select(0..5) %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

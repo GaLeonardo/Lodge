@@ -1,6 +1,6 @@
 <h2>Minhas Reservas</h2>
 
-<% if @reservations %>
+<% if @reservations.any? %>
   <% @reservations.each do |reservation| %>
     <% unless reservation.active? || reservation.canceled? || reservation.finished? %>
       <%= button_to "Cancelar reserva", cancel_reservation_path(reservation), method: :post %>
@@ -35,4 +35,6 @@
       <dd><%= Reservation.human_attribute_name("status.#{reservation.status}") %></dd>
     </dl>
   <% end %>
+<% else %>
+  <div>Você não realizou nenhuma reserva</div>
 <% end %>
