@@ -21,7 +21,7 @@ class Lodge < ApplicationRecord
     total_ratings = self.reviews.sum(:rating)
     total_reviews = self.reviews.count
 
-    return 0 if total_reviews.zero?
+    return '' if total_reviews.zero?
 
     average = total_ratings.to_f / total_reviews
     average.round(2)
