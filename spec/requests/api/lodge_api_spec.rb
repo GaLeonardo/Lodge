@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '' do
+describe 'Lodge API' do
   context 'GET /api/v1/lodges/' do
     it 'list all active lodges' do
       user = User.create!(

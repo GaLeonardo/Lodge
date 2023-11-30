@@ -29,7 +29,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :lodges, only: [:index, :show]
+      resources :lodges, only: [:index, :show] do
+        resources :rooms, only: [:index] do
+          post 'pre_reservation', on: :member
+        end
+      end
     end
   end
 end
