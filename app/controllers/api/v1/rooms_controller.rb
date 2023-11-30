@@ -1,4 +1,4 @@
-class Api::V1::RoomsController < ActionController::API
+class Api::V1::RoomsController < Api::V1::ApiController
   def index
     lodge = Lodge.find(params[:lodge_id])
     rooms = lodge.rooms

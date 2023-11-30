@@ -1,4 +1,4 @@
-class Api::V1::LodgesController < ActionController::API
+class Api::V1::LodgesController < Api::V1::ApiController
   def index
     lodges = Lodge.ativo.order(:brand_name)
     lodges = lodges.where("brand_name LIKE ?", "%#{params[:name]}%") if params[:name]
