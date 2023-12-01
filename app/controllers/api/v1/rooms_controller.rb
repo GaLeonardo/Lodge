@@ -1,9 +1,9 @@
 class Api::V1::RoomsController < Api::V1::ApiController
   def index
     lodge = Lodge.find(params[:lodge_id])
-    rooms = lodge.rooms
+    rooms = lodge.rooms.includes(:service)
 
-    render status: 200, json: rooms.as_json(except: [:created_at, :updated_at])
+    render status: 200, json: rooms.as_json(except: [:created_at, :updated_at], include: { service: { only: [:has_bathroom, :has_balcony, :has_air_conditioner, :has_tv, :has_closet, :has_vault, :is_accessible] } })
   end
 
   def pre_reservation

@@ -160,7 +160,7 @@ describe 'Host views checkin page' do
 
       expect(page).to have_content 'Check-out realizado com sucesso.'
       expect(page).to have_content 'Status da reserva: Finalizado'
-      expect(page).to have_content 'Valor pago: R$ 900,00'
+      expect(page).to have_content "Valor pago: R$ #{CheckOut.last.total_paid},00"
       expect(page).not_to have_button 'Registrar Check-in'
       expect(page).not_to have_button 'Registrar Check-out'
     end
